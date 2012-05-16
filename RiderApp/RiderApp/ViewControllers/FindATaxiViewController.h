@@ -14,4 +14,5 @@
 
 - (IBAction)findATaxiClicked:(id)sender;
 - (IBAction)cancelFindClicked:(id)sender;
+- (void)showAlertWithMessage: (NSString *)message;
 @end

@@ -18,6 +18,12 @@
 		186E8742154EC9F800825FFC /* Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 186E873F154EC9F800825FFC /* Green.png */; };
 		186E8743154EC9F800825FFC /* Red.png in Resources */ = {isa = PBXBuildFile; fileRef = 186E8740154EC9F800825FFC /* Red.png */; };
 		186E8744154EC9F800825FFC /* Yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 186E8741154EC9F800825FFC /* Yellow.png */; };
+		18C125551563E71800CC1129 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18C125541563E71800CC1129 /* Entitlements.plist */; };
+		18C3D769156293D600254A89 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C3D765156293D600254A89 /* background.png */; };
+		18C3D76A156293D600254A89 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C3D766156293D600254A89 /* background@2x.png */; };
+		18C3D76B156293D600254A89 /* signup-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C3D767156293D600254A89 /* signup-button.png */; };
+		18C3D76C156293D600254A89 /* signup-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C3D768156293D600254A89 /* signup-button@2x.png */; };
+		18C67EEC1560F7AB007A2EFF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C67EEB1560F7AB007A2EFF /* CoreLocation.framework */; };
 		18FC3CE8155A302A004D4024 /* CommonMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC3CDB155A302A004D4024 /* CommonMethods.m */; };
 		18FC3CE9155A302A004D4024 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC3CDD155A302A004D4024 /* CustomTextField.m */; };
 		18FC3CEA155A302A004D4024 /* FindATaxiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC3CE0155A302A004D4024 /* FindATaxiViewController.m */; };
@@ -62,6 +68,12 @@
 		186E873F154EC9F800825FFC /* Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Green.png; sourceTree = "<group>"; };
 		186E8740154EC9F800825FFC /* Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Red.png; sourceTree = "<group>"; };
 		186E8741154EC9F800825FFC /* Yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yellow.png; sourceTree = "<group>"; };
+		18C125541563E71800CC1129 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		18C3D765156293D600254A89 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		18C3D766156293D600254A89 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
+		18C3D767156293D600254A89 /* signup-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signup-button.png"; sourceTree = "<group>"; };
+		18C3D768156293D600254A89 /* signup-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signup-button@2x.png"; sourceTree = "<group>"; };
+		18C67EEB1560F7AB007A2EFF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		18FC3CDA155A302A004D4024 /* CommonMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonMethods.h; sourceTree = "<group>"; };
 		18FC3CDB155A302A004D4024 /* CommonMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonMethods.m; sourceTree = "<group>"; };
 		18FC3CDC155A302A004D4024 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
@@ -118,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18C67EEC1560F7AB007A2EFF /* CoreLocation.framework in Frameworks */,
 				18FC3D3C155A30FD004D4024 /* libz.1.2.5.dylib in Frameworks */,
 				18FC3D3A155A30F8004D4024 /* SystemConfiguration.framework in Frameworks */,
 				18FC3D38155A30F0004D4024 /* MobileCoreServices.framework in Frameworks */,
@@ -135,6 +148,7 @@
 		186E86E9154EB13300825FFC = {
 			isa = PBXGroup;
 			children = (
+				18C125541563E71800CC1129 /* Entitlements.plist */,
 				18FC3D04155A30BE004D4024 /* ASI Classes */,
 				18FC3CF0155A30A6004D4024 /* JSON */,
 				186E86FE154EB13300825FFC /* RiderApp */,
@@ -154,6 +168,7 @@
 		186E86F7154EB13300825FFC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18C67EEB1560F7AB007A2EFF /* CoreLocation.framework */,
 				18FC3D3B155A30FD004D4024 /* libz.1.2.5.dylib */,
 				18FC3D39155A30F8004D4024 /* SystemConfiguration.framework */,
 				18FC3D37155A30F0004D4024 /* MobileCoreServices.framework */,
@@ -193,6 +208,10 @@
 		186E870F154EB1EB00825FFC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				18C3D765156293D600254A89 /* background.png */,
+				18C3D766156293D600254A89 /* background@2x.png */,
+				18C3D767156293D600254A89 /* signup-button.png */,
+				18C3D768156293D600254A89 /* signup-button@2x.png */,
 				186E8710154EB1EB00825FFC /* Box.png */,
 				186E873F154EC9F800825FFC /* Green.png */,
 				186E8740154EC9F800825FFC /* Red.png */,
@@ -343,6 +362,11 @@
 				18FC3CEB155A302A004D4024 /* FindATaxiViewController.xib in Resources */,
 				18FC3CED155A302A004D4024 /* SignUpViewController.xib in Resources */,
 				18FC3CEF155A302A004D4024 /* TaxiFoundViewController.xib in Resources */,
+				18C3D769156293D600254A89 /* background.png in Resources */,
+				18C3D76A156293D600254A89 /* background@2x.png in Resources */,
+				18C3D76B156293D600254A89 /* signup-button.png in Resources */,
+				18C3D76C156293D600254A89 /* signup-button@2x.png in Resources */,
+				18C125551563E71800CC1129 /* Entitlements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,10 +471,15 @@
 		186E870E154EB13300825FFC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: sam garzon";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: sam garzon";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RiderApp/RiderApp-Prefix.pch";
 				INFOPLIST_FILE = "RiderApp/RiderApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "99F920FA-ECC8-460B-85F2-048212BAF2AA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "99F920FA-ECC8-460B-85F2-048212BAF2AA";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

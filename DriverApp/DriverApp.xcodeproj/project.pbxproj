@@ -18,6 +18,12 @@
 		186E873C154EC95700825FFC /* Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 186E8739154EC95700825FFC /* Green.png */; };
 		186E873D154EC95700825FFC /* Red.png in Resources */ = {isa = PBXBuildFile; fileRef = 186E873A154EC95700825FFC /* Red.png */; };
 		186E873E154EC95700825FFC /* Yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 186E873B154EC95700825FFC /* Yellow.png */; };
+		18C125571563E72700CC1129 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18C125561563E72700CC1129 /* Entitlements.plist */; };
+		18C3D75C15628F9900254A89 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C3D75815628F9900254A89 /* background.png */; };
+		18C3D75D15628F9900254A89 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C3D75915628F9900254A89 /* background@2x.png */; };
+		18C3D75E15628F9900254A89 /* signup-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C3D75A15628F9900254A89 /* signup-button.png */; };
+		18C3D75F15628F9900254A89 /* signup-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C3D75B15628F9900254A89 /* signup-button@2x.png */; };
+		18C67EE91560F6EF007A2EFF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C67EE81560F6EE007A2EFF /* CoreLocation.framework */; };
 		18FC3CA7155A23B6004D4024 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC3C95155A23B6004D4024 /* ASIAuthenticationDialog.m */; };
 		18FC3CA8155A23B6004D4024 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC3C98155A23B6004D4024 /* ASIDownloadCache.m */; };
 		18FC3CA9155A23B6004D4024 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC3C9A155A23B6004D4024 /* ASIFormDataRequest.m */; };
@@ -62,6 +68,12 @@
 		186E8739154EC95700825FFC /* Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Green.png; sourceTree = "<group>"; };
 		186E873A154EC95700825FFC /* Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Red.png; sourceTree = "<group>"; };
 		186E873B154EC95700825FFC /* Yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yellow.png; sourceTree = "<group>"; };
+		18C125561563E72700CC1129 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		18C3D75815628F9900254A89 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		18C3D75915628F9900254A89 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
+		18C3D75A15628F9900254A89 /* signup-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signup-button.png"; sourceTree = "<group>"; };
+		18C3D75B15628F9900254A89 /* signup-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signup-button@2x.png"; sourceTree = "<group>"; };
+		18C67EE81560F6EE007A2EFF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		18FC3C94155A23B6004D4024 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		18FC3C95155A23B6004D4024 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		18FC3C96155A23B6004D4024 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -118,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18C67EE91560F6EF007A2EFF /* CoreLocation.framework in Frameworks */,
 				18FC3CD3155A2D89004D4024 /* QuartzCore.framework in Frameworks */,
 				18FC3CBE155A2B82004D4024 /* MobileCoreServices.framework in Frameworks */,
 				18FC3CBC155A2B6C004D4024 /* SystemConfiguration.framework in Frameworks */,
@@ -135,6 +148,7 @@
 		186E86AF154E9FE900825FFC = {
 			isa = PBXGroup;
 			children = (
+				18C125561563E72700CC1129 /* Entitlements.plist */,
 				18FC3D1F155A30CF004D4024 /* JSON */,
 				18FC3C93155A23B6004D4024 /* ASI Classes */,
 				186E86C4154E9FE900825FFC /* DriverApp */,
@@ -154,6 +168,7 @@
 		186E86BD154E9FE900825FFC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18C67EE81560F6EE007A2EFF /* CoreLocation.framework */,
 				18FC3CD2155A2D89004D4024 /* QuartzCore.framework */,
 				18FC3CBD155A2B82004D4024 /* MobileCoreServices.framework */,
 				18FC3CBB155A2B6C004D4024 /* SystemConfiguration.framework */,
@@ -193,6 +208,10 @@
 		186E86E4154EAE3400825FFC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				18C3D75815628F9900254A89 /* background.png */,
+				18C3D75915628F9900254A89 /* background@2x.png */,
+				18C3D75A15628F9900254A89 /* signup-button.png */,
+				18C3D75B15628F9900254A89 /* signup-button@2x.png */,
 				186E8739154EC95700825FFC /* Green.png */,
 				186E873A154EC95700825FFC /* Red.png */,
 				186E873B154EC95700825FFC /* Yellow.png */,
@@ -343,6 +362,11 @@
 				18FC3CCD155A2BF7004D4024 /* HomeViewController.xib in Resources */,
 				18FC3CCF155A2BF7004D4024 /* SignUpViewController.xib in Resources */,
 				18FC3CD1155A2BF7004D4024 /* TaxiRequestViewController.xib in Resources */,
+				18C3D75C15628F9900254A89 /* background.png in Resources */,
+				18C3D75D15628F9900254A89 /* background@2x.png in Resources */,
+				18C3D75E15628F9900254A89 /* signup-button.png in Resources */,
+				18C3D75F15628F9900254A89 /* signup-button@2x.png in Resources */,
+				18C125571563E72700CC1129 /* Entitlements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,10 +471,15 @@
 		186E86D4154E9FE900825FFC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: sam garzon";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: sam garzon";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DriverApp/DriverApp-Prefix.pch";
 				INFOPLIST_FILE = "DriverApp/DriverApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "19431983-D879-4C92-9F78-E2D51E5A2C8C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "19431983-D879-4C92-9F78-E2D51E5A2C8C";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

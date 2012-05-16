@@ -9,11 +9,15 @@
 #import "AppDelegate.h"
 #import "SignUpViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "FindATaxiViewController.h"
 
 @implementation AppDelegate
 
 @synthesize window = _window;
 @synthesize navigationController;
+@synthesize latitudeVal;
+@synthesize longitudeVal;
+@synthesize mLocationManager;
 
 - (void)dealloc
 {
@@ -26,17 +30,52 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
-    SignUpViewController *viewController = [[SignUpViewController alloc] initWithNibName:@"SignUpViewController" bundle:nil];
+    UIViewController *viewController = nil;
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"registeredOnServer"]) {
+        viewController = [[FindATaxiViewController alloc] initWithNibName:@"FindATaxiViewController" bundle:nil];
+    }
+    else {
+        viewController = [[SignUpViewController alloc] initWithNibName:@"SignUpViewController" bundle:nil];
+    }
     self.navigationController = [[[UINavigationController alloc] initWithRootViewController:viewController] autorelease];
     self.navigationController.navigationBarHidden = YES;
     [viewController release];
     
+    // Register for notifications
+    [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound| UIRemoteNotificationTypeBadge)];  
+    
+    // Handle the notification at launch
+    NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    if (userInfo != nil) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"To Test Notification: %@", userInfo] message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+        [alert release];        
+    }
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window addSubview:navigationController.view];
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // UALOG(@"APN device token: %@", deviceToken);
+    // Updates the device token and registers the token with UA
+    NSString* newToken = [deviceToken description];
+    newToken = [newToken stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    newToken = [newToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [[NSUserDefaults standardUserDefaults] setObject:newToken forKey:@"APNS_Token"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+// Copy and paste this method into your AppDelegate to recieve push
+// notifications for your application while the app is running.
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"To Test Notification: %@", userInfo] message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alert show];
+    [alert release];     
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -131,5 +170,50 @@
 	}
 }
 
+#pragma mark - Location Related
+
+- (void)updateTheLocation {
+    if (!mLocationManager) {
+        self.mLocationManager.delegate = nil;
+        self.mLocationManager = nil;
+        CLLocationManager *locMngr = [[CLLocationManager alloc] init];
+        self.mLocationManager = locMngr;
+        self.mLocationManager.delegate = self;
+        self.mLocationManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
+        self.mLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+        self.mLocationManager.delegate = self;
+        [locMngr release];
+    }
+    else {
+        self.mLocationManager.delegate = self;
+    }
+    [self.mLocationManager startUpdatingLocation];
+}
+
+#pragma mark locationManager delegate
+-(void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation
+		   fromLocation:(CLLocation *)oldLocation
+{
+    NSDate *eventDate = newLocation.timestamp; 
+    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow]; 
+    if (abs(howRecent) < 5.0) { 
+        self.latitudeVal = newLocation.coordinate.latitude;
+        self.longitudeVal = newLocation.coordinate.longitude;
+    }
+}
+
+-(void) locationManager: (CLLocationManager *)manager didFailWithError: (NSError *)error
+{
+    [self showAlertWithMessage:[error localizedDescription]];
+    [self.mLocationManager stopUpdatingLocation];
+    self.mLocationManager.delegate = nil;
+    self.mLocationManager = nil;
+}
+
+- (void)showAlertWithMessage: (NSString *)message {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"TaxiRider App" message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alertView show];
+    [alertView release];
+}
 
 @end

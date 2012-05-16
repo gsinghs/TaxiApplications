@@ -13,5 +13,6 @@
 }
 
 - (IBAction)availableORHireClicked:(UIButton *)sender;
-
+- (void)postStatusOnServer:(int)status;
+- (void)showAlertWithMessage: (NSString *)message;
 @end

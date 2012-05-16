@@ -109,7 +109,7 @@
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:requestUrlString]];
     [request setPostValue:@"signup" forKey:@"axn"];
     [request setPostValue:@"rider" forKey:@"code"];
-    [request setPostValue:[CommonMethods generatedeviceID] forKey:@"deviceid"];
+    [request setPostValue:[CommonMethods uniqueDeviceID] forKey:@"deviceid"];
     
     [request setPostValue:[self validatedTextOfTextFieldForNull:nameTxtField] forKey:@"name"];
     [request setPostValue:[self validatedTextOfTextFieldForNull:phoneNumberTxtField] forKey:@"phone"];
@@ -140,6 +140,9 @@
     //NSLog(@"uploadReportFinished: %@", dict);
     
     if ([[dict valueForKey:@"returnCode"] intValue] == 0) { //Everything was fine on server.
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"registeredOnServer"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
         FindATaxiViewController *viewController = [[FindATaxiViewController alloc] initWithNibName:@"FindATaxiViewController" bundle:nil];
         [self.navigationController pushViewController:viewController animated:YES];
         [viewController release];

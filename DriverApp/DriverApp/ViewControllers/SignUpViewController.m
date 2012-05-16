@@ -132,7 +132,7 @@
 
     [request setPostValue:@"signup" forKey:@"axn"];
     [request setPostValue:@"driver" forKey:@"code"];
-    [request setPostValue:[CommonMethods generatedeviceID] forKey:@"deviceid"];
+    [request setPostValue:[CommonMethods uniqueDeviceID] forKey:@"deviceid"];
 
     [request setPostValue:[self validatedTextOfTextFieldForNull:nameTxtField] forKey:@"name"];
     [request setPostValue:[self validatedTextOfTextFieldForNull:companyTxtField] forKey:@"company"];
@@ -164,6 +164,9 @@
     //NSLog(@"uploadReportFinished: %@", dict);
     
     if ([[dict valueForKey:@"returnCode"] intValue] == 0) { //Everything was fine on server.
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"registeredOnServer"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+
         HomeViewController *viewController = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
         [self.navigationController pushViewController:viewController animated:YES];
         [viewController release];
