@@ -30,6 +30,8 @@
 		186E86CB154E9FE900825FFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E86CA154E9FE900825FFC /* main.m */; };
 		18AF48C61566B50000E2683E /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AF48C41566B4FF00E2683E /* icon.png */; };
 		18AF48C71566B50000E2683E /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AF48C51566B4FF00E2683E /* icon@2x.png */; };
+		18AF48CF1566C19B00E2683E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AF48CD1566C19900E2683E /* Default@2x.png */; };
+		18AF48D01566C19B00E2683E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AF48CE1566C19A00E2683E /* Default.png */; };
 		18C125571563E72700CC1129 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18C125561563E72700CC1129 /* Entitlements.plist */; };
 		18C67EE91560F6EF007A2EFF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C67EE81560F6EE007A2EFF /* CoreLocation.framework */; };
 		18FC3CA7155A23B6004D4024 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC3C95155A23B6004D4024 /* ASIAuthenticationDialog.m */; };
@@ -86,8 +88,10 @@
 		186E86CA154E9FE900825FFC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		186E86CC154E9FE900825FFC /* DriverApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DriverApp-Prefix.pch"; sourceTree = "<group>"; };
 		186E86CD154E9FE900825FFC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		18AF48C41566B4FF00E2683E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		18AF48C51566B4FF00E2683E /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		18AF48C41566B4FF00E2683E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
+		18AF48C51566B4FF00E2683E /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "../icon@2x.png"; sourceTree = "<group>"; };
+		18AF48CD1566C19900E2683E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		18AF48CE1566C19A00E2683E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		18C125561563E72700CC1129 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		18C67EE81560F6EE007A2EFF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		18FC3C94155A23B6004D4024 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
@@ -189,8 +193,6 @@
 		186E86AF154E9FE900825FFC = {
 			isa = PBXGroup;
 			children = (
-				18AF48C41566B4FF00E2683E /* icon.png */,
-				18AF48C51566B4FF00E2683E /* icon@2x.png */,
 				18C125561563E72700CC1129 /* Entitlements.plist */,
 				1843E682156650B300836DE9 /* Reachability */,
 				18FC3D1F155A30CF004D4024 /* JSON */,
@@ -241,6 +243,10 @@
 		186E86C5154E9FE900825FFC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				18AF48CD1566C19900E2683E /* Default@2x.png */,
+				18AF48CE1566C19A00E2683E /* Default.png */,
+				18AF48C41566B4FF00E2683E /* icon.png */,
+				18AF48C51566B4FF00E2683E /* icon@2x.png */,
 				1843E66215664CEA00836DE9 /* NewImages */,
 				186E86C6154E9FE900825FFC /* DriverApp-Info.plist */,
 				186E86C7154E9FE900825FFC /* InfoPlist.strings */,
@@ -393,6 +399,8 @@
 				1843E68015664D4D00836DE9 /* SignUpCustomCell.xib in Resources */,
 				18AF48C61566B50000E2683E /* icon.png in Resources */,
 				18AF48C71566B50000E2683E /* icon@2x.png in Resources */,
+				18AF48CF1566C19B00E2683E /* Default@2x.png in Resources */,
+				18AF48D01566C19B00E2683E /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
