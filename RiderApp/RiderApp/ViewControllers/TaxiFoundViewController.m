@@ -7,6 +7,7 @@
 //
 
 #import "TaxiFoundViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation TaxiFoundViewController
 
@@ -33,6 +34,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    bgImageView.layer.cornerRadius = 8;
+    bgImageView.backgroundColor = [UIColor blackColor];
+    
+    taxiNameLabel.text = [NSString stringWithFormat:@"Company: %@", [[[NSUserDefaults standardUserDefaults] valueForKey:@"request"] valueForKey:@"company"]];
+    taxiNumberLabel.text = [NSString stringWithFormat:@"Cab #: %@", [[[NSUserDefaults standardUserDefaults] valueForKey:@"request"] valueForKey:@"cab_id"]];
+    
 }
 
 - (void)viewDidUnload
@@ -49,7 +56,7 @@
 }
 
 - (IBAction)cancelButtonClicked:(id)sender {
-    
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end

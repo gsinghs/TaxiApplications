@@ -10,6 +10,7 @@
 #import "ASIFormDataRequest.h"
 #import "CommonMethods.h"
 #import "NSString+SBJSON.h"
+#import "TaxiFoundViewController.h"
 
 @implementation FindATaxiViewController
 
@@ -30,12 +31,19 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super dealloc];
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(taxiFound:) name:@"TAXI_FOUND" object:nil];
+
 }
 
 - (void)viewDidUnload
@@ -51,6 +59,27 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [findingTaxiView removeFromSuperview];
+    [warningView removeFromSuperview];
+}
+
+#pragma - Notification
+
+- (void)taxiFound: (NSNotification *)notification {
+    //  NSDictionary *requestDict = [notification object];
+    TaxiFoundViewController *viewController = [[TaxiFoundViewController alloc] initWithNibName:@"TaxiFoundViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+    [viewController release];
+}
+
+- (IBAction)doneClicked:(id)sender {
+    [findingTaxiView removeFromSuperview];
+    [warningView removeFromSuperview];
+}
+
+
 #pragma - Button Clicks
 
 - (IBAction)findATaxiClicked:(id)sender {
@@ -60,6 +89,7 @@
 
 - (IBAction)cancelFindClicked:(id)sender {
     [findingTaxiView removeFromSuperview];
+    [warningView removeFromSuperview];
 }
 
 #pragma mark- Server Posting Methods
@@ -99,9 +129,10 @@
     NSLog(@"uploadReportFinished: %@", dict);
     
     if ([[dict valueForKey:@"returnCode"] intValue] == 0) { //Everything was fine on server.
-        FindATaxiViewController *viewController = [[FindATaxiViewController alloc] initWithNibName:@"FindATaxiViewController" bundle:nil];
-        [self.navigationController pushViewController:viewController animated:YES];
-        [viewController release];
+       
+    }
+    else if ([[dict valueForKey:@"returnCode"] intValue] == 1 && [[dict valueForKey:@"error"] isEqualToString:@"No Taxis Found"]) {
+        [self.view addSubview:warningView];
     }
     else {
         [self showAlertWithMessage:[NSString stringWithFormat:@"Error from Server: %@", [dict valueForKey:@"error"]]];

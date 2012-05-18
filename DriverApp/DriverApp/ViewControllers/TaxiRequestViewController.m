@@ -7,6 +7,10 @@
 //
 
 #import "TaxiRequestViewController.h"
+#import "AppDelegate.h"
+#import "ASIFormDataRequest.h"
+#import "CommonMethods.h"
+#import "NSString+SBJSON.h"
 
 @implementation TaxiRequestViewController
 
@@ -51,7 +55,7 @@
 #pragma mark - Button Clicks
 
 - (IBAction)acceptRequestClicked:(id)sender {
-    [self.view addSubview:requestAcceptedView];
+    [self performSelector:@selector(acceptRequestOnServer)];
 }
 
 - (IBAction)rejectRequestClicked:(id)sender {
@@ -61,6 +65,75 @@
 - (IBAction)callcustomerClicked:(id)sender {
     
 }
+
+- (IBAction)doneClicked:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+
+#pragma mark- Server Posting Methods
+
+//Make a server call to create an account on server
+- (void)acceptRequestOnServer {
+    NSString *requestUrlString = hostURL;
+    
+    //Show loading view while server call is in place
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate showLoadingIndicator];
+    
+    //Creating the HTTP Request and setting the required post values
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:requestUrlString]];
+    [request setPostValue:@"request" forKey:@"axn"];
+    [request setPostValue:@"accept" forKey:@"code"];
+    [request setPostValue:[CommonMethods uniqueDeviceID] forKey:@"deviceid"];
+    
+    [request setPostValue:[[[NSUserDefaults standardUserDefaults] valueForKey:@"request"] valueForKey:@"request_id"] forKey:@"request_id"];
+    [request setPostValue:@"0" forKey:@"status"];
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"APNS_Token"]) {
+        [request setPostValue:[[NSUserDefaults standardUserDefaults] valueForKey:@"APNS_Token"] forKey:@"token"];
+    }
+    [request setTimeOutSeconds:200];
+    [request setDelegate:self];
+    
+    [request setDidFinishSelector:@selector(uploadReportFinished:)];
+    [request setDidFailSelector:@selector(uploadReportFailed:)];
+    [request startAsynchronous];
+    
+}
+
+//If request fails, show an alert to the user and hide the indicator view
+- (void)uploadReportFailed:(ASIHTTPRequest *)request {
+    NSLog(@"uploadReportFailed: %@", [request responseString]);
+    [self showAlertWithMessage:@"Server call failed, Please try again later."];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate hideLoadingIndicator];
+    
+}
+
+//If request finishes, check for the response string, hide the loading indicator and pass him to the next view if response OK
+- (void)uploadReportFinished: (ASIHTTPRequest *)request {
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate hideLoadingIndicator];
+    
+    NSDictionary *dict = [[request responseString] JSONValue];
+    //NSLog(@"uploadReportFinished: %@", dict);
+    
+    if ([[dict valueForKey:@"returnCode"] intValue] == 0) { //Everything was fine on server.
+        [self.view addSubview:requestAcceptedView];
+    }
+    else {
+        [self showAlertWithMessage:[NSString stringWithFormat:@"Error from Server: %@", [dict valueForKey:@"error"]]];
+    }
+    
+}
+
+
+- (void)showAlertWithMessage: (NSString *)message {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"TaxiRider App" message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alertView show];
+    [alertView release];
+}
+
 
 
 @end

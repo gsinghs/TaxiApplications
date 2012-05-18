@@ -36,5 +36,7 @@
 - (void)updateTheLocation;
 - (void)locationUpdatingTimer;
 - (void)stopTimers;
+- (void)handleNotification: (NSDictionary *)userInfo;
+- (BOOL)isInternetAvailable;
 
 @end

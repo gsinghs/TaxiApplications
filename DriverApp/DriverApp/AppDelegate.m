@@ -13,6 +13,7 @@
 #import "ASIFormDataRequest.h"
 #import "CommonMethods.h"
 #import "NSString+SBJSON.h"
+#import "Reachability.h"
 
 @implementation AppDelegate
 
@@ -31,6 +32,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
     UIViewController *viewController = nil;
@@ -56,9 +58,7 @@
     // Handle the notification at launch
     NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if (userInfo != nil) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"To Test Notification: %@", userInfo] message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alert show];
-        [alert release];
+        [self handleNotification:userInfo];
     }
     
     
@@ -80,11 +80,18 @@
 // Copy and paste this method into your AppDelegate to recieve push
 // notifications for your application while the app is running.
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"To Test Notification: %@", userInfo] message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-    [alert show];
-    [alert release];
+    [self handleNotification:userInfo];
 }
+
+- (void)handleNotification: (NSDictionary *)userInfo {
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    if ([[[userInfo valueForKey:@"aps"] valueForKey:@"alert"] isEqualToString:@"New Taxi Request"]) {
+        [[NSUserDefaults standardUserDefaults] setObject:[userInfo valueForKey:@"request"] forKey:@"request"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"REQUEST_FOR_TAXI" object:[userInfo valueForKey:@"request"]];
+    }
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -276,6 +283,30 @@
     else {
         [self showAlertWithMessage:[NSString stringWithFormat:@"Error from Server: %@", [dict valueForKey:@"error"]]];
     }
+}
+
+#pragma mark - Check Connectivity
+
+- (BOOL)isInternetAvailable {
+    
+	//check for match status initially.
+    Reachability *hostReach = [Reachability reachabilityForInternetConnection];	
+	NetworkStatus remoteHostStatus = [hostReach currentReachabilityStatus];	
+    
+    if (remoteHostStatus == NotReachable) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Internet connection not available. You need to have an internet connection to use this application." 
+                                                            message:nil 
+                                                           delegate:self 
+                                                  cancelButtonTitle:nil 
+                                                  otherButtonTitles:@"OK", nil];
+		[alertView show];
+		[alertView release];
+		alertView = nil;
+        return NO;
+    }
+    else {
+		return YES;
+	}
 }
 
 

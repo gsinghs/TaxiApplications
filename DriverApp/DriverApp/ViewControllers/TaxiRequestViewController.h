@@ -17,4 +17,7 @@
 - (IBAction)acceptRequestClicked:(id)sender;
 - (IBAction)rejectRequestClicked:(id)sender;
 - (IBAction)callcustomerClicked:(id)sender;
+- (void)showAlertWithMessage: (NSString *)message;
+- (IBAction)doneClicked:(id)sender;
+
 @end

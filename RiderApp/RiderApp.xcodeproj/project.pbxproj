@@ -7,22 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1843E69315665F4D00836DE9 /* SignUpCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1843E69015665F4D00836DE9 /* SignUpCustomCell.xib */; };
+		1843E69415665F4D00836DE9 /* SignUpCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843E69215665F4D00836DE9 /* SignUpCustomCell.m */; };
+		1843E6A11566600E00836DE9 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 1843E6971566600E00836DE9 /* background.png */; };
+		1843E6A21566600E00836DE9 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1843E6981566600E00836DE9 /* background@2x.png */; };
+		1843E6A31566600E00836DE9 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1843E6991566600E00836DE9 /* button.png */; };
+		1843E6A41566600E00836DE9 /* button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1843E69A1566600E00836DE9 /* button@2x.png */; };
+		1843E6A51566600E00836DE9 /* greenbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1843E69B1566600E00836DE9 /* greenbutton.png */; };
+		1843E6A61566600E00836DE9 /* greenbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1843E69C1566600E00836DE9 /* greenbutton@2x.png */; };
+		1843E6A71566600E00836DE9 /* redbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1843E69D1566600E00836DE9 /* redbutton.png */; };
+		1843E6A81566600E00836DE9 /* redbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1843E69E1566600E00836DE9 /* redbutton@2x.png */; };
+		1843E6A91566600E00836DE9 /* taxi.png in Resources */ = {isa = PBXBuildFile; fileRef = 1843E69F1566600E00836DE9 /* taxi.png */; };
+		1843E6AA1566600E00836DE9 /* taxi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1843E6A01566600E00836DE9 /* taxi@2x.png */; };
+		1843E6AE1566602600836DE9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843E6AD1566602600836DE9 /* Reachability.m */; };
 		186E86F9154EB13300825FFC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186E86F8154EB13300825FFC /* UIKit.framework */; };
 		186E86FB154EB13300825FFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186E86FA154EB13300825FFC /* Foundation.framework */; };
 		186E86FD154EB13300825FFC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186E86FC154EB13300825FFC /* CoreGraphics.framework */; };
 		186E8703154EB13300825FFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 186E8701154EB13300825FFC /* InfoPlist.strings */; };
 		186E8705154EB13300825FFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E8704154EB13300825FFC /* main.m */; };
 		186E8709154EB13300825FFC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E8708154EB13300825FFC /* AppDelegate.m */; };
-		186E8715154EB1EB00825FFC /* Box.png in Resources */ = {isa = PBXBuildFile; fileRef = 186E8710154EB1EB00825FFC /* Box.png */; };
-		186E871D154EB3E500825FFC /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 186E871C154EB3E500825FFC /* Logo.png */; };
-		186E8742154EC9F800825FFC /* Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 186E873F154EC9F800825FFC /* Green.png */; };
-		186E8743154EC9F800825FFC /* Red.png in Resources */ = {isa = PBXBuildFile; fileRef = 186E8740154EC9F800825FFC /* Red.png */; };
-		186E8744154EC9F800825FFC /* Yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 186E8741154EC9F800825FFC /* Yellow.png */; };
+		18AF48BD1566B4D500E2683E /* warning.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AF48BB1566B4D500E2683E /* warning.png */; };
+		18AF48BE1566B4D500E2683E /* warning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AF48BC1566B4D500E2683E /* warning@2x.png */; };
+		18AF48C21566B4DF00E2683E /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AF48C01566B4DF00E2683E /* icon.png */; };
+		18AF48C31566B4DF00E2683E /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AF48C11566B4DF00E2683E /* icon@2x.png */; };
 		18C125551563E71800CC1129 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18C125541563E71800CC1129 /* Entitlements.plist */; };
-		18C3D769156293D600254A89 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C3D765156293D600254A89 /* background.png */; };
-		18C3D76A156293D600254A89 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C3D766156293D600254A89 /* background@2x.png */; };
-		18C3D76B156293D600254A89 /* signup-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C3D767156293D600254A89 /* signup-button.png */; };
-		18C3D76C156293D600254A89 /* signup-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C3D768156293D600254A89 /* signup-button@2x.png */; };
 		18C67EEC1560F7AB007A2EFF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C67EEB1560F7AB007A2EFF /* CoreLocation.framework */; };
 		18FC3CE8155A302A004D4024 /* CommonMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC3CDB155A302A004D4024 /* CommonMethods.m */; };
 		18FC3CE9155A302A004D4024 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC3CDD155A302A004D4024 /* CustomTextField.m */; };
@@ -44,7 +52,6 @@
 		18FC3D1B155A30BE004D4024 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC3D0D155A30BE004D4024 /* ASIHTTPRequest.m */; };
 		18FC3D1C155A30BE004D4024 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC3D11155A30BE004D4024 /* ASIInputStream.m */; };
 		18FC3D1D155A30BE004D4024 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC3D13155A30BE004D4024 /* ASINetworkQueue.m */; };
-		18FC3D1E155A30BE004D4024 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC3D17155A30BE004D4024 /* Reachability.m */; };
 		18FC3D34155A30E1004D4024 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FC3D33155A30E1004D4024 /* QuartzCore.framework */; };
 		18FC3D36155A30E7004D4024 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FC3D35155A30E7004D4024 /* CFNetwork.framework */; };
 		18FC3D38155A30F0004D4024 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FC3D37155A30F0004D4024 /* MobileCoreServices.framework */; };
@@ -53,6 +60,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1843E69015665F4D00836DE9 /* SignUpCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpCustomCell.xib; sourceTree = "<group>"; };
+		1843E69115665F4D00836DE9 /* SignUpCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpCustomCell.h; sourceTree = "<group>"; };
+		1843E69215665F4D00836DE9 /* SignUpCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpCustomCell.m; sourceTree = "<group>"; };
+		1843E6971566600E00836DE9 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		1843E6981566600E00836DE9 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
+		1843E6991566600E00836DE9 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
+		1843E69A1566600E00836DE9 /* button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button@2x.png"; sourceTree = "<group>"; };
+		1843E69B1566600E00836DE9 /* greenbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenbutton.png; sourceTree = "<group>"; };
+		1843E69C1566600E00836DE9 /* greenbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greenbutton@2x.png"; sourceTree = "<group>"; };
+		1843E69D1566600E00836DE9 /* redbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redbutton.png; sourceTree = "<group>"; };
+		1843E69E1566600E00836DE9 /* redbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redbutton@2x.png"; sourceTree = "<group>"; };
+		1843E69F1566600E00836DE9 /* taxi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taxi.png; sourceTree = "<group>"; };
+		1843E6A01566600E00836DE9 /* taxi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "taxi@2x.png"; sourceTree = "<group>"; };
+		1843E6AC1566602600836DE9 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		1843E6AD1566602600836DE9 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		186E86F4154EB13300825FFC /* RiderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RiderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		186E86F8154EB13300825FFC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		186E86FA154EB13300825FFC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -63,16 +85,11 @@
 		186E8706154EB13300825FFC /* RiderApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RiderApp-Prefix.pch"; sourceTree = "<group>"; };
 		186E8707154EB13300825FFC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		186E8708154EB13300825FFC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		186E8710154EB1EB00825FFC /* Box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Box.png; sourceTree = "<group>"; };
-		186E871C154EB3E500825FFC /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
-		186E873F154EC9F800825FFC /* Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Green.png; sourceTree = "<group>"; };
-		186E8740154EC9F800825FFC /* Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Red.png; sourceTree = "<group>"; };
-		186E8741154EC9F800825FFC /* Yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yellow.png; sourceTree = "<group>"; };
+		18AF48BB1566B4D500E2683E /* warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = warning.png; sourceTree = "<group>"; };
+		18AF48BC1566B4D500E2683E /* warning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "warning@2x.png"; sourceTree = "<group>"; };
+		18AF48C01566B4DF00E2683E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		18AF48C11566B4DF00E2683E /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		18C125541563E71800CC1129 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
-		18C3D765156293D600254A89 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
-		18C3D766156293D600254A89 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
-		18C3D767156293D600254A89 /* signup-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signup-button.png"; sourceTree = "<group>"; };
-		18C3D768156293D600254A89 /* signup-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signup-button@2x.png"; sourceTree = "<group>"; };
 		18C67EEB1560F7AB007A2EFF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		18FC3CDA155A302A004D4024 /* CommonMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonMethods.h; sourceTree = "<group>"; };
 		18FC3CDB155A302A004D4024 /* CommonMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonMethods.m; sourceTree = "<group>"; };
@@ -116,8 +133,6 @@
 		18FC3D12155A30BE004D4024 /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
 		18FC3D13155A30BE004D4024 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
 		18FC3D14155A30BE004D4024 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
-		18FC3D16155A30BE004D4024 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		18FC3D17155A30BE004D4024 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		18FC3D33155A30E1004D4024 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		18FC3D35155A30E7004D4024 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		18FC3D37155A30F0004D4024 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -145,10 +160,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1843E6961566600E00836DE9 /* NewImages */ = {
+			isa = PBXGroup;
+			children = (
+				18AF48BB1566B4D500E2683E /* warning.png */,
+				18AF48BC1566B4D500E2683E /* warning@2x.png */,
+				1843E6971566600E00836DE9 /* background.png */,
+				1843E6981566600E00836DE9 /* background@2x.png */,
+				1843E6991566600E00836DE9 /* button.png */,
+				1843E69A1566600E00836DE9 /* button@2x.png */,
+				1843E69B1566600E00836DE9 /* greenbutton.png */,
+				1843E69C1566600E00836DE9 /* greenbutton@2x.png */,
+				1843E69D1566600E00836DE9 /* redbutton.png */,
+				1843E69E1566600E00836DE9 /* redbutton@2x.png */,
+				1843E69F1566600E00836DE9 /* taxi.png */,
+				1843E6A01566600E00836DE9 /* taxi@2x.png */,
+			);
+			path = NewImages;
+			sourceTree = "<group>";
+		};
+		1843E6AB1566602600836DE9 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				1843E6AC1566602600836DE9 /* Reachability.h */,
+				1843E6AD1566602600836DE9 /* Reachability.m */,
+			);
+			name = Reachability;
+			path = RiderApp/Reachability;
+			sourceTree = "<group>";
+		};
 		186E86E9154EB13300825FFC = {
 			isa = PBXGroup;
 			children = (
+				18AF48C01566B4DF00E2683E /* icon.png */,
+				18AF48C11566B4DF00E2683E /* icon@2x.png */,
 				18C125541563E71800CC1129 /* Entitlements.plist */,
+				1843E6AB1566602600836DE9 /* Reachability */,
 				18FC3D04155A30BE004D4024 /* ASI Classes */,
 				18FC3CF0155A30A6004D4024 /* JSON */,
 				186E86FE154EB13300825FFC /* RiderApp */,
@@ -196,29 +243,13 @@
 		186E86FF154EB13300825FFC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				186E870F154EB1EB00825FFC /* Images */,
+				1843E6961566600E00836DE9 /* NewImages */,
 				186E8700154EB13300825FFC /* RiderApp-Info.plist */,
 				186E8701154EB13300825FFC /* InfoPlist.strings */,
 				186E8704154EB13300825FFC /* main.m */,
 				186E8706154EB13300825FFC /* RiderApp-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		186E870F154EB1EB00825FFC /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				18C3D765156293D600254A89 /* background.png */,
-				18C3D766156293D600254A89 /* background@2x.png */,
-				18C3D767156293D600254A89 /* signup-button.png */,
-				18C3D768156293D600254A89 /* signup-button@2x.png */,
-				186E8710154EB1EB00825FFC /* Box.png */,
-				186E873F154EC9F800825FFC /* Green.png */,
-				186E8740154EC9F800825FFC /* Red.png */,
-				186E8741154EC9F800825FFC /* Yellow.png */,
-				186E871C154EB3E500825FFC /* Logo.png */,
-			);
-			path = Images;
 			sourceTree = "<group>";
 		};
 		18FC3CD9155A302A004D4024 /* Helpers */ = {
@@ -235,6 +266,9 @@
 		18FC3CDE155A302A004D4024 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1843E69015665F4D00836DE9 /* SignUpCustomCell.xib */,
+				1843E69115665F4D00836DE9 /* SignUpCustomCell.h */,
+				1843E69215665F4D00836DE9 /* SignUpCustomCell.m */,
 				18FC3CDF155A302A004D4024 /* FindATaxiViewController.h */,
 				18FC3CE0155A302A004D4024 /* FindATaxiViewController.m */,
 				18FC3CE1155A302A004D4024 /* FindATaxiViewController.xib */,
@@ -288,19 +322,9 @@
 				18FC3D12155A30BE004D4024 /* ASINetworkQueue.h */,
 				18FC3D13155A30BE004D4024 /* ASINetworkQueue.m */,
 				18FC3D14155A30BE004D4024 /* ASIProgressDelegate.h */,
-				18FC3D15155A30BE004D4024 /* Reachability */,
 			);
 			name = "ASI Classes";
 			path = "RiderApp/ASI Classes";
-			sourceTree = "<group>";
-		};
-		18FC3D15155A30BE004D4024 /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				18FC3D16155A30BE004D4024 /* Reachability.h */,
-				18FC3D17155A30BE004D4024 /* Reachability.m */,
-			);
-			path = Reachability;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,19 +378,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				186E8703154EB13300825FFC /* InfoPlist.strings in Resources */,
-				186E8715154EB1EB00825FFC /* Box.png in Resources */,
-				186E871D154EB3E500825FFC /* Logo.png in Resources */,
-				186E8742154EC9F800825FFC /* Green.png in Resources */,
-				186E8743154EC9F800825FFC /* Red.png in Resources */,
-				186E8744154EC9F800825FFC /* Yellow.png in Resources */,
 				18FC3CEB155A302A004D4024 /* FindATaxiViewController.xib in Resources */,
 				18FC3CED155A302A004D4024 /* SignUpViewController.xib in Resources */,
 				18FC3CEF155A302A004D4024 /* TaxiFoundViewController.xib in Resources */,
-				18C3D769156293D600254A89 /* background.png in Resources */,
-				18C3D76A156293D600254A89 /* background@2x.png in Resources */,
-				18C3D76B156293D600254A89 /* signup-button.png in Resources */,
-				18C3D76C156293D600254A89 /* signup-button@2x.png in Resources */,
 				18C125551563E71800CC1129 /* Entitlements.plist in Resources */,
+				1843E69315665F4D00836DE9 /* SignUpCustomCell.xib in Resources */,
+				1843E6A11566600E00836DE9 /* background.png in Resources */,
+				1843E6A21566600E00836DE9 /* background@2x.png in Resources */,
+				1843E6A31566600E00836DE9 /* button.png in Resources */,
+				1843E6A41566600E00836DE9 /* button@2x.png in Resources */,
+				1843E6A51566600E00836DE9 /* greenbutton.png in Resources */,
+				1843E6A61566600E00836DE9 /* greenbutton@2x.png in Resources */,
+				1843E6A71566600E00836DE9 /* redbutton.png in Resources */,
+				1843E6A81566600E00836DE9 /* redbutton@2x.png in Resources */,
+				1843E6A91566600E00836DE9 /* taxi.png in Resources */,
+				1843E6AA1566600E00836DE9 /* taxi@2x.png in Resources */,
+				18AF48BD1566B4D500E2683E /* warning.png in Resources */,
+				18AF48BE1566B4D500E2683E /* warning@2x.png in Resources */,
+				18AF48C21566B4DF00E2683E /* icon.png in Resources */,
+				18AF48C31566B4DF00E2683E /* icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,7 +426,8 @@
 				18FC3D1B155A30BE004D4024 /* ASIHTTPRequest.m in Sources */,
 				18FC3D1C155A30BE004D4024 /* ASIInputStream.m in Sources */,
 				18FC3D1D155A30BE004D4024 /* ASINetworkQueue.m in Sources */,
-				18FC3D1E155A30BE004D4024 /* Reachability.m in Sources */,
+				1843E69415665F4D00836DE9 /* SignUpCustomCell.m in Sources */,
+				1843E6AE1566602600836DE9 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

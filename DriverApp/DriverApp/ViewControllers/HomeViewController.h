@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface HomeViewController : UIViewController {
+    IBOutlet UIButton *availableButton;
+    IBOutlet UIButton *occupyButton;
     
 }
 

@@ -10,6 +10,7 @@
 #import "SignUpViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "FindATaxiViewController.h"
+#import "Reachability.h"
 
 @implementation AppDelegate
 
@@ -28,11 +29,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
     UIViewController *viewController = nil;
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"registeredOnServer"]) {
         viewController = [[FindATaxiViewController alloc] initWithNibName:@"FindATaxiViewController" bundle:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:viewController selector:@selector(taxiFound:) name:@"TAXI_FOUND" object:nil];
     }
     else {
         viewController = [[SignUpViewController alloc] initWithNibName:@"SignUpViewController" bundle:nil];
@@ -47,9 +50,7 @@
     // Handle the notification at launch
     NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if (userInfo != nil) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"To Test Notification: %@", userInfo] message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alert show];
-        [alert release];        
+        [self handleNotification:userInfo];
     }
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -68,12 +69,20 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+- (void)handleNotification: (NSDictionary *)userInfo {
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    if ([[[userInfo valueForKey:@"aps"] valueForKey:@"alert"] isEqualToString:@"Taxi Found"]) {
+        [[NSUserDefaults standardUserDefaults] setObject:[userInfo valueForKey:@"request"] forKey:@"request"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"TAXI_FOUND" object:[userInfo valueForKey:@"request"]];
+    }
+}
+
+
 // Copy and paste this method into your AppDelegate to recieve push
 // notifications for your application while the app is running.
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"To Test Notification: %@", userInfo] message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-    [alert show];
-    [alert release];     
+    [self handleNotification:userInfo];
 }
 
 
@@ -215,5 +224,32 @@
     [alertView show];
     [alertView release];
 }
+
+#pragma mark - Check Connectivity
+
+- (BOOL)isInternetAvailable {
+    
+	//check for match status initially.
+    Reachability *hostReach = [Reachability reachabilityForInternetConnection];	
+	NetworkStatus remoteHostStatus = [hostReach currentReachabilityStatus];	
+    
+    if (remoteHostStatus == NotReachable) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Internet connection not available. You need to have an internet connection to use this application." 
+                                                            message:nil 
+                                                           delegate:self 
+                                                  cancelButtonTitle:nil 
+                                                  otherButtonTitles:@"OK", nil];
+		[alertView show];
+		[alertView release];
+		alertView = nil;
+        return NO;
+    }
+    else {
+		return YES;
+	}
+}
+
+
+
 
 @end

@@ -10,9 +10,12 @@
 
 @interface FindATaxiViewController : UIViewController {
     IBOutlet UIView *findingTaxiView;
+    IBOutlet UIView *warningView;
 }
 
 - (IBAction)findATaxiClicked:(id)sender;
 - (IBAction)cancelFindClicked:(id)sender;
 - (void)showAlertWithMessage: (NSString *)message;
+- (IBAction)doneClicked:(id)sender;
+
 @end

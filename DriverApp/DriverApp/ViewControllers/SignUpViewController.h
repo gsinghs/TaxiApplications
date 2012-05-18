@@ -9,15 +9,23 @@
 #import <UIKit/UIKit.h>
 #import "CustomTextField.h"
 
-@interface SignUpViewController : UIViewController <UITextFieldDelegate> {
-    IBOutlet CustomTextField *nameTxtField;
-    IBOutlet CustomTextField *companyTxtField;
-    IBOutlet CustomTextField *cabNumberTxtField;
+@interface SignUpViewController : UIViewController  <UITextFieldDelegate, UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate> {
+	NSArray *tableViewData;
+	
+	UITableView *mTableView;
+	NSMutableString *nameString;
+    NSMutableString *companyString;
+	NSMutableString *cabString;
+    
+    	
 }
 
-- (IBAction)signUpClicked:(id)sender;
-- (BOOL)validateTextOfTextFieldForNull: (UITextField *)textField;
+@property (nonatomic, retain) NSArray *tableViewData;
+@property (nonatomic, retain) IBOutlet UITableView *mTableView;
+
+
+- (IBAction)submit:(id)sender;
 - (void)showAlertWithMessage: (NSString *)message;
 - (void)createAccountOnServer;
-- (NSString *)validatedTextOfTextFieldForNull: (UITextField *)textField;
+- (BOOL)validateTextForNull: (NSString *)string;
 @end

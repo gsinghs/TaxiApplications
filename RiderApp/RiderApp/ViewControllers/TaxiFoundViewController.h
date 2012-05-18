@@ -11,6 +11,8 @@
 @interface TaxiFoundViewController : UIViewController {
     IBOutlet UILabel *taxiNameLabel;
     IBOutlet UILabel *timeLabel;
+    IBOutlet UILabel *taxiNumberLabel;
+    IBOutlet UIImageView *bgImageView;
 }
 
 - (IBAction)cancelButtonClicked:(id)sender;

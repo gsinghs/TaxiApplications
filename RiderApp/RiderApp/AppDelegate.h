@@ -29,5 +29,7 @@
 - (void)showAlertWithMessage: (NSString *)message;
 -(void) showLoadingIndicator;
 -(void) hideLoadingIndicator;
+- (BOOL)isInternetAvailable;
+- (void)handleNotification: (NSDictionary *)userInfo;
 
 @end

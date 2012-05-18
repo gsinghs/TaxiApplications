@@ -7,22 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1843E66D15664CEA00836DE9 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 1843E66315664CEA00836DE9 /* background.png */; };
+		1843E66E15664CEA00836DE9 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1843E66415664CEA00836DE9 /* background@2x.png */; };
+		1843E66F15664CEA00836DE9 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1843E66515664CEA00836DE9 /* button.png */; };
+		1843E67015664CEA00836DE9 /* button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1843E66615664CEA00836DE9 /* button@2x.png */; };
+		1843E67115664CEA00836DE9 /* greenbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1843E66715664CEA00836DE9 /* greenbutton.png */; };
+		1843E67215664CEA00836DE9 /* greenbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1843E66815664CEA00836DE9 /* greenbutton@2x.png */; };
+		1843E67315664CEA00836DE9 /* redbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1843E66915664CEA00836DE9 /* redbutton.png */; };
+		1843E67415664CEA00836DE9 /* redbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1843E66A15664CEA00836DE9 /* redbutton@2x.png */; };
+		1843E67515664CEA00836DE9 /* taxi.png in Resources */ = {isa = PBXBuildFile; fileRef = 1843E66B15664CEA00836DE9 /* taxi.png */; };
+		1843E67615664CEA00836DE9 /* taxi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1843E66C15664CEA00836DE9 /* taxi@2x.png */; };
+		1843E68015664D4D00836DE9 /* SignUpCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1843E67B15664D4D00836DE9 /* SignUpCustomCell.xib */; };
+		1843E68115664D4E00836DE9 /* SignUpCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843E67D15664D4D00836DE9 /* SignUpCustomCell.m */; };
+		1843E685156650B300836DE9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843E684156650B300836DE9 /* Reachability.m */; };
+		1843E6871566522F00836DE9 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1843E6861566522F00836DE9 /* libz.1.1.3.dylib */; };
+		1843E6891566529000836DE9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843E6881566529000836DE9 /* AppDelegate.m */; };
+		1843E68B15665A1200836DE9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1843E68A15665A1200836DE9 /* MapKit.framework */; };
 		186E86BF154E9FE900825FFC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186E86BE154E9FE900825FFC /* UIKit.framework */; };
 		186E86C1154E9FE900825FFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186E86C0154E9FE900825FFC /* Foundation.framework */; };
 		186E86C3154E9FE900825FFC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186E86C2154E9FE900825FFC /* CoreGraphics.framework */; };
 		186E86C9154E9FE900825FFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 186E86C7154E9FE900825FFC /* InfoPlist.strings */; };
 		186E86CB154E9FE900825FFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E86CA154E9FE900825FFC /* main.m */; };
-		186E86CF154E9FE900825FFC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E86CE154E9FE900825FFC /* AppDelegate.m */; };
-		186E86E7154EAE3400825FFC /* Box.png in Resources */ = {isa = PBXBuildFile; fileRef = 186E86E5154EAE3400825FFC /* Box.png */; };
-		186E871F154EB3F400825FFC /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 186E871E154EB3F400825FFC /* Logo.png */; };
-		186E873C154EC95700825FFC /* Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 186E8739154EC95700825FFC /* Green.png */; };
-		186E873D154EC95700825FFC /* Red.png in Resources */ = {isa = PBXBuildFile; fileRef = 186E873A154EC95700825FFC /* Red.png */; };
-		186E873E154EC95700825FFC /* Yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 186E873B154EC95700825FFC /* Yellow.png */; };
+		18AF48C61566B50000E2683E /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AF48C41566B4FF00E2683E /* icon.png */; };
+		18AF48C71566B50000E2683E /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AF48C51566B4FF00E2683E /* icon@2x.png */; };
 		18C125571563E72700CC1129 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18C125561563E72700CC1129 /* Entitlements.plist */; };
-		18C3D75C15628F9900254A89 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C3D75815628F9900254A89 /* background.png */; };
-		18C3D75D15628F9900254A89 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C3D75915628F9900254A89 /* background@2x.png */; };
-		18C3D75E15628F9900254A89 /* signup-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C3D75A15628F9900254A89 /* signup-button.png */; };
-		18C3D75F15628F9900254A89 /* signup-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C3D75B15628F9900254A89 /* signup-button@2x.png */; };
 		18C67EE91560F6EF007A2EFF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C67EE81560F6EE007A2EFF /* CoreLocation.framework */; };
 		18FC3CA7155A23B6004D4024 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC3C95155A23B6004D4024 /* ASIAuthenticationDialog.m */; };
 		18FC3CA8155A23B6004D4024 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC3C98155A23B6004D4024 /* ASIDownloadCache.m */; };
@@ -30,10 +38,8 @@
 		18FC3CAA155A23B6004D4024 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC3C9C155A23B6004D4024 /* ASIHTTPRequest.m */; };
 		18FC3CAB155A23B6004D4024 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC3CA0155A23B6004D4024 /* ASIInputStream.m */; };
 		18FC3CAC155A23B6004D4024 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC3CA2155A23B6004D4024 /* ASINetworkQueue.m */; };
-		18FC3CAD155A23B6004D4024 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC3CA6155A23B6004D4024 /* Reachability.m */; };
 		18FC3CB6155A2815004D4024 /* CommonMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC3CB5155A2815004D4024 /* CommonMethods.m */; };
 		18FC3CB8155A2B4E004D4024 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FC3CB7155A2B4E004D4024 /* CFNetwork.framework */; };
-		18FC3CBA155A2B5D004D4024 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FC3CB9155A2B5D004D4024 /* libz.1.2.5.dylib */; };
 		18FC3CBC155A2B6C004D4024 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FC3CBB155A2B6C004D4024 /* SystemConfiguration.framework */; };
 		18FC3CBE155A2B82004D4024 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FC3CBD155A2B82004D4024 /* MobileCoreServices.framework */; };
 		18FC3CC1155A2BEC004D4024 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC3CC0155A2BEC004D4024 /* CustomTextField.m */; };
@@ -53,6 +59,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1843E66315664CEA00836DE9 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		1843E66415664CEA00836DE9 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
+		1843E66515664CEA00836DE9 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
+		1843E66615664CEA00836DE9 /* button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button@2x.png"; sourceTree = "<group>"; };
+		1843E66715664CEA00836DE9 /* greenbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenbutton.png; sourceTree = "<group>"; };
+		1843E66815664CEA00836DE9 /* greenbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greenbutton@2x.png"; sourceTree = "<group>"; };
+		1843E66915664CEA00836DE9 /* redbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redbutton.png; sourceTree = "<group>"; };
+		1843E66A15664CEA00836DE9 /* redbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redbutton@2x.png"; sourceTree = "<group>"; };
+		1843E66B15664CEA00836DE9 /* taxi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taxi.png; sourceTree = "<group>"; };
+		1843E66C15664CEA00836DE9 /* taxi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "taxi@2x.png"; sourceTree = "<group>"; };
+		1843E67B15664D4D00836DE9 /* SignUpCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpCustomCell.xib; sourceTree = "<group>"; };
+		1843E67C15664D4D00836DE9 /* SignUpCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpCustomCell.h; sourceTree = "<group>"; };
+		1843E67D15664D4D00836DE9 /* SignUpCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpCustomCell.m; sourceTree = "<group>"; };
+		1843E683156650B300836DE9 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		1843E684156650B300836DE9 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		1843E6861566522F00836DE9 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		1843E6881566529000836DE9 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1843E68A15665A1200836DE9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		186E86BA154E9FE900825FFC /* DriverApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DriverApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		186E86BE154E9FE900825FFC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		186E86C0154E9FE900825FFC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -62,17 +86,9 @@
 		186E86CA154E9FE900825FFC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		186E86CC154E9FE900825FFC /* DriverApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DriverApp-Prefix.pch"; sourceTree = "<group>"; };
 		186E86CD154E9FE900825FFC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		186E86CE154E9FE900825FFC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		186E86E5154EAE3400825FFC /* Box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Box.png; sourceTree = "<group>"; };
-		186E871E154EB3F400825FFC /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
-		186E8739154EC95700825FFC /* Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Green.png; sourceTree = "<group>"; };
-		186E873A154EC95700825FFC /* Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Red.png; sourceTree = "<group>"; };
-		186E873B154EC95700825FFC /* Yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yellow.png; sourceTree = "<group>"; };
+		18AF48C41566B4FF00E2683E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		18AF48C51566B4FF00E2683E /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		18C125561563E72700CC1129 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
-		18C3D75815628F9900254A89 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
-		18C3D75915628F9900254A89 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
-		18C3D75A15628F9900254A89 /* signup-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signup-button.png"; sourceTree = "<group>"; };
-		18C3D75B15628F9900254A89 /* signup-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signup-button@2x.png"; sourceTree = "<group>"; };
 		18C67EE81560F6EE007A2EFF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		18FC3C94155A23B6004D4024 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		18FC3C95155A23B6004D4024 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
@@ -90,12 +106,9 @@
 		18FC3CA1155A23B6004D4024 /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
 		18FC3CA2155A23B6004D4024 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
 		18FC3CA3155A23B6004D4024 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
-		18FC3CA5155A23B6004D4024 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		18FC3CA6155A23B6004D4024 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		18FC3CB4155A2815004D4024 /* CommonMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonMethods.h; sourceTree = "<group>"; };
 		18FC3CB5155A2815004D4024 /* CommonMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonMethods.m; sourceTree = "<group>"; };
 		18FC3CB7155A2B4E004D4024 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		18FC3CB9155A2B5D004D4024 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		18FC3CBB155A2B6C004D4024 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		18FC3CBD155A2B82004D4024 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		18FC3CBF155A2BEC004D4024 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
@@ -130,11 +143,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1843E68B15665A1200836DE9 /* MapKit.framework in Frameworks */,
+				1843E6871566522F00836DE9 /* libz.1.1.3.dylib in Frameworks */,
 				18C67EE91560F6EF007A2EFF /* CoreLocation.framework in Frameworks */,
 				18FC3CD3155A2D89004D4024 /* QuartzCore.framework in Frameworks */,
 				18FC3CBE155A2B82004D4024 /* MobileCoreServices.framework in Frameworks */,
 				18FC3CBC155A2B6C004D4024 /* SystemConfiguration.framework in Frameworks */,
-				18FC3CBA155A2B5D004D4024 /* libz.1.2.5.dylib in Frameworks */,
 				18FC3CB8155A2B4E004D4024 /* CFNetwork.framework in Frameworks */,
 				186E86BF154E9FE900825FFC /* UIKit.framework in Frameworks */,
 				186E86C1154E9FE900825FFC /* Foundation.framework in Frameworks */,
@@ -145,10 +159,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1843E66215664CEA00836DE9 /* NewImages */ = {
+			isa = PBXGroup;
+			children = (
+				1843E66315664CEA00836DE9 /* background.png */,
+				1843E66415664CEA00836DE9 /* background@2x.png */,
+				1843E66515664CEA00836DE9 /* button.png */,
+				1843E66615664CEA00836DE9 /* button@2x.png */,
+				1843E66715664CEA00836DE9 /* greenbutton.png */,
+				1843E66815664CEA00836DE9 /* greenbutton@2x.png */,
+				1843E66915664CEA00836DE9 /* redbutton.png */,
+				1843E66A15664CEA00836DE9 /* redbutton@2x.png */,
+				1843E66B15664CEA00836DE9 /* taxi.png */,
+				1843E66C15664CEA00836DE9 /* taxi@2x.png */,
+			);
+			path = NewImages;
+			sourceTree = "<group>";
+		};
+		1843E682156650B300836DE9 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				1843E683156650B300836DE9 /* Reachability.h */,
+				1843E684156650B300836DE9 /* Reachability.m */,
+			);
+			name = Reachability;
+			path = DriverApp/Reachability;
+			sourceTree = "<group>";
+		};
 		186E86AF154E9FE900825FFC = {
 			isa = PBXGroup;
 			children = (
+				18AF48C41566B4FF00E2683E /* icon.png */,
+				18AF48C51566B4FF00E2683E /* icon@2x.png */,
 				18C125561563E72700CC1129 /* Entitlements.plist */,
+				1843E682156650B300836DE9 /* Reachability */,
 				18FC3D1F155A30CF004D4024 /* JSON */,
 				18FC3C93155A23B6004D4024 /* ASI Classes */,
 				186E86C4154E9FE900825FFC /* DriverApp */,
@@ -168,11 +212,12 @@
 		186E86BD154E9FE900825FFC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1843E6861566522F00836DE9 /* libz.1.1.3.dylib */,
+				1843E68A15665A1200836DE9 /* MapKit.framework */,
 				18C67EE81560F6EE007A2EFF /* CoreLocation.framework */,
 				18FC3CD2155A2D89004D4024 /* QuartzCore.framework */,
 				18FC3CBD155A2B82004D4024 /* MobileCoreServices.framework */,
 				18FC3CBB155A2B6C004D4024 /* SystemConfiguration.framework */,
-				18FC3CB9155A2B5D004D4024 /* libz.1.2.5.dylib */,
 				18FC3CB7155A2B4E004D4024 /* CFNetwork.framework */,
 				186E86BE154E9FE900825FFC /* UIKit.framework */,
 				186E86C0154E9FE900825FFC /* Foundation.framework */,
@@ -187,7 +232,7 @@
 				18FC3CC2155A2BF7004D4024 /* ViewControllers */,
 				18FC3CB3155A2806004D4024 /* Helpers */,
 				186E86CD154E9FE900825FFC /* AppDelegate.h */,
-				186E86CE154E9FE900825FFC /* AppDelegate.m */,
+				1843E6881566529000836DE9 /* AppDelegate.m */,
 				186E86C5154E9FE900825FFC /* Supporting Files */,
 			);
 			path = DriverApp;
@@ -196,29 +241,13 @@
 		186E86C5154E9FE900825FFC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				186E86E4154EAE3400825FFC /* Images */,
+				1843E66215664CEA00836DE9 /* NewImages */,
 				186E86C6154E9FE900825FFC /* DriverApp-Info.plist */,
 				186E86C7154E9FE900825FFC /* InfoPlist.strings */,
 				186E86CA154E9FE900825FFC /* main.m */,
 				186E86CC154E9FE900825FFC /* DriverApp-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		186E86E4154EAE3400825FFC /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				18C3D75815628F9900254A89 /* background.png */,
-				18C3D75915628F9900254A89 /* background@2x.png */,
-				18C3D75A15628F9900254A89 /* signup-button.png */,
-				18C3D75B15628F9900254A89 /* signup-button@2x.png */,
-				186E8739154EC95700825FFC /* Green.png */,
-				186E873A154EC95700825FFC /* Red.png */,
-				186E873B154EC95700825FFC /* Yellow.png */,
-				186E871E154EB3F400825FFC /* Logo.png */,
-				186E86E5154EAE3400825FFC /* Box.png */,
-			);
-			path = Images;
 			sourceTree = "<group>";
 		};
 		18FC3C93155A23B6004D4024 /* ASI Classes */ = {
@@ -240,19 +269,9 @@
 				18FC3CA1155A23B6004D4024 /* ASINetworkQueue.h */,
 				18FC3CA2155A23B6004D4024 /* ASINetworkQueue.m */,
 				18FC3CA3155A23B6004D4024 /* ASIProgressDelegate.h */,
-				18FC3CA4155A23B6004D4024 /* Reachability */,
 			);
 			name = "ASI Classes";
 			path = "DriverApp/ASI Classes";
-			sourceTree = "<group>";
-		};
-		18FC3CA4155A23B6004D4024 /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				18FC3CA5155A23B6004D4024 /* Reachability.h */,
-				18FC3CA6155A23B6004D4024 /* Reachability.m */,
-			);
-			path = Reachability;
 			sourceTree = "<group>";
 		};
 		18FC3CB3155A2806004D4024 /* Helpers */ = {
@@ -269,6 +288,9 @@
 		18FC3CC2155A2BF7004D4024 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1843E67B15664D4D00836DE9 /* SignUpCustomCell.xib */,
+				1843E67C15664D4D00836DE9 /* SignUpCustomCell.h */,
+				1843E67D15664D4D00836DE9 /* SignUpCustomCell.m */,
 				18FC3CC3155A2BF7004D4024 /* HomeViewController.h */,
 				18FC3CC4155A2BF7004D4024 /* HomeViewController.m */,
 				18FC3CC5155A2BF7004D4024 /* HomeViewController.xib */,
@@ -354,19 +376,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				186E86C9154E9FE900825FFC /* InfoPlist.strings in Resources */,
-				186E86E7154EAE3400825FFC /* Box.png in Resources */,
-				186E871F154EB3F400825FFC /* Logo.png in Resources */,
-				186E873C154EC95700825FFC /* Green.png in Resources */,
-				186E873D154EC95700825FFC /* Red.png in Resources */,
-				186E873E154EC95700825FFC /* Yellow.png in Resources */,
 				18FC3CCD155A2BF7004D4024 /* HomeViewController.xib in Resources */,
 				18FC3CCF155A2BF7004D4024 /* SignUpViewController.xib in Resources */,
 				18FC3CD1155A2BF7004D4024 /* TaxiRequestViewController.xib in Resources */,
-				18C3D75C15628F9900254A89 /* background.png in Resources */,
-				18C3D75D15628F9900254A89 /* background@2x.png in Resources */,
-				18C3D75E15628F9900254A89 /* signup-button.png in Resources */,
-				18C3D75F15628F9900254A89 /* signup-button@2x.png in Resources */,
 				18C125571563E72700CC1129 /* Entitlements.plist in Resources */,
+				1843E66D15664CEA00836DE9 /* background.png in Resources */,
+				1843E66E15664CEA00836DE9 /* background@2x.png in Resources */,
+				1843E66F15664CEA00836DE9 /* button.png in Resources */,
+				1843E67015664CEA00836DE9 /* button@2x.png in Resources */,
+				1843E67115664CEA00836DE9 /* greenbutton.png in Resources */,
+				1843E67215664CEA00836DE9 /* greenbutton@2x.png in Resources */,
+				1843E67315664CEA00836DE9 /* redbutton.png in Resources */,
+				1843E67415664CEA00836DE9 /* redbutton@2x.png in Resources */,
+				1843E67515664CEA00836DE9 /* taxi.png in Resources */,
+				1843E67615664CEA00836DE9 /* taxi@2x.png in Resources */,
+				1843E68015664D4D00836DE9 /* SignUpCustomCell.xib in Resources */,
+				18AF48C61566B50000E2683E /* icon.png in Resources */,
+				18AF48C71566B50000E2683E /* icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,14 +404,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				186E86CB154E9FE900825FFC /* main.m in Sources */,
-				186E86CF154E9FE900825FFC /* AppDelegate.m in Sources */,
 				18FC3CA7155A23B6004D4024 /* ASIAuthenticationDialog.m in Sources */,
 				18FC3CA8155A23B6004D4024 /* ASIDownloadCache.m in Sources */,
 				18FC3CA9155A23B6004D4024 /* ASIFormDataRequest.m in Sources */,
 				18FC3CAA155A23B6004D4024 /* ASIHTTPRequest.m in Sources */,
 				18FC3CAB155A23B6004D4024 /* ASIInputStream.m in Sources */,
 				18FC3CAC155A23B6004D4024 /* ASINetworkQueue.m in Sources */,
-				18FC3CAD155A23B6004D4024 /* Reachability.m in Sources */,
 				18FC3CB6155A2815004D4024 /* CommonMethods.m in Sources */,
 				18FC3CC1155A2BEC004D4024 /* CustomTextField.m in Sources */,
 				18FC3CCC155A2BF7004D4024 /* HomeViewController.m in Sources */,
@@ -397,6 +421,9 @@
 				18FC3D30155A30CF004D4024 /* SBJsonBase.m in Sources */,
 				18FC3D31155A30CF004D4024 /* SBJsonParser.m in Sources */,
 				18FC3D32155A30CF004D4024 /* SBJsonWriter.m in Sources */,
+				1843E68115664D4E00836DE9 /* SignUpCustomCell.m in Sources */,
+				1843E685156650B300836DE9 /* Reachability.m in Sources */,
+				1843E6891566529000836DE9 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

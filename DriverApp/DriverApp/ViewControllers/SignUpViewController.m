@@ -13,103 +13,268 @@
 #import "AppDelegate.h"
 #import "NSString+SBJSON.h"
 
+#import "SignUpCustomCell.h"
+
 @implementation SignUpViewController
+@synthesize tableViewData;
+@synthesize mTableView;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
 
-#pragma mark - View lifecycle
+#pragma mark -
+#pragma mark UIViewController methods
 
-- (void)viewDidLoad
-{
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    nameTxtField.verticalPadding = 0; 
-    nameTxtField.horizontalPadding = 15;
-    companyTxtField.verticalPadding = 0; 
-    companyTxtField.horizontalPadding = 15;
-    cabNumberTxtField.verticalPadding = 0; 
-    cabNumberTxtField.horizontalPadding = 15;
+	self.title = @"Registration";
+  	
+    nameString = [[NSMutableString alloc] initWithString:@""];
+    companyString = [[NSMutableString alloc] initWithString:@""];
+	cabString = [[NSMutableString alloc] initWithString:@""];
+	
+	
+	NSMutableDictionary *fullNameDic = [[NSMutableDictionary alloc] init];
+	[fullNameDic setValue:@"Name" forKey:@"fieldName"];
+	[fullNameDic setValue:@"John Appleased" forKey:@"fieldPlaceholder"];
+	[fullNameDic setValue:nameString forKey:@"fieldValue"];
+	
+    NSMutableDictionary *companyDict = [[NSMutableDictionary alloc] init];
+	[companyDict setValue:@"Company" forKey:@"fieldName"];
+	[companyDict setValue:@"Metro Cab" forKey:@"fieldPlaceholder"];
+	[companyDict setValue:companyString forKey:@"fieldValue"];
+    
+	NSMutableDictionary *cabDict = [[NSMutableDictionary alloc] init];
+	[cabDict setValue:@"Cab #" forKey:@"fieldName"];
+	[cabDict setValue:@"123" forKey:@"fieldPlaceholder"];
+	[cabDict setValue:cabString forKey:@"fieldValue"];
+   
+	NSArray *section = [[NSArray alloc] initWithObjects:fullNameDic, companyDict, cabDict, nil];
+	[fullNameDic release];
+	[companyDict release];
+	[cabDict release];
+	
+	NSArray *array = [[NSArray alloc] initWithObjects:section, nil];
+	self.tableViewData = array;
+	[array release];
+	
+	[section release];
+	
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:YES];
+	
+}
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+	
     
 }
 
 
-#pragma TextField delegates
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {        // return NO to disallow editing.
-    if (textField == cabNumberTxtField) {
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:.3];
-        CGRect frame = self.view.frame;
-        frame.origin.y = -40;
-        self.view.frame = frame;
-        [UIView commitAnimations];
-    }
-    return YES;
+/*
+ // Override to allow orientations other than the default portrait orientation.
+ - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+ // Return YES for supported orientations
+ return (interfaceOrientation == UIInterfaceOrientationPortrait);
+ }
+ */
+
+- (void)didReceiveMemoryWarning {
+	// Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+	
+	// Release any cached data, images, etc that aren't in use.
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    if (textField == cabNumberTxtField) {
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:.3];
-        CGRect frame = self.view.frame;
-        frame.origin.y = 0;
-        self.view.frame = frame;
-        [UIView commitAnimations];
-    }
+- (void)viewDidUnload {
+	// Release any retained subviews of the main view.
+	// e.g. self.myOutlet = nil;
+	self.tableViewData = nil;
+	self.mTableView = nil;
+    
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {              // called when 'return' key pressed. return NO to ignore.
-    [textField resignFirstResponder];
-    return YES;
+
+- (void)dealloc {
+	[cabString release];
+	[companyString release];
+	[nameString release];
+	[mTableView release];
+	[tableViewData release];
+    [super dealloc];
 }
 
-#pragma - Button Actions
-- (IBAction)signUpClicked:(id)sender {
-    if ([self validateTextOfTextFieldForNull:nameTxtField] == NO) {
+
+
+#pragma mark -
+#pragma mark Table view methods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [tableViewData count];
+}
+
+
+// Customize the number of rows in the table view.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [[tableViewData objectAtIndex:section] count];
+}
+
+
+// Customize the appearance of table view cells.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"SignUpCustomCell";
+    
+    SignUpCustomCell *cell = (SignUpCustomCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+		
+		
+		
+		NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"SignUpCustomCell" owner:nil options:nil];
+		
+		for(id currentObject in topLevelObjects)
+		{
+			if([currentObject isKindOfClass:[UITableViewCell class]])
+			{
+				cell = (SignUpCustomCell *) currentObject;
+				cell.selectionStyle = UITableViewCellSelectionStyleNone;
+				//cell.backgroundColor = [UIColor clearColor];
+				break;
+			}
+		}		
+	}
+	
+	cell.fieldNameLabel.text = [[[tableViewData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] valueForKey:@"fieldName"];
+    cell.fieldValueTextField.delegate = self;
+	cell.indexPath = indexPath;
+	
+	
+	NSString *fieldValue = [[[tableViewData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] valueForKey:@"fieldValue"];
+	if([fieldValue isEqualToString:@""])
+	{
+		cell.fieldValueTextField.borderStyle = UITextBorderStyleRoundedRect;
+		cell.fieldValueTextField.text = @"";
+		cell.fieldValueTextField.placeholder = [[[tableViewData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] valueForKey:@"fieldPlaceholder"];
+	}
+	else
+	{
+		cell.fieldValueTextField.borderStyle = UITextBorderStyleNone;
+		cell.fieldValueTextField.text = fieldValue;
+		cell.fieldValueTextField.placeholder = [[[tableViewData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] valueForKey:@"fieldPlaceholder"];
+	}
+    return cell;
+}
+
+#pragma mark -
+#pragma mark Action methods
+
+- (IBAction)submit:(id)sender
+{
+	
+	if(![(AppDelegate *)[[UIApplication sharedApplication] delegate] isInternetAvailable])
+	{
+		UIAlertView *newAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Server not reachable. Please check your internet connectivity" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+		[newAlertView show];
+		[newAlertView release];
+		
+		return;
+	}
+    
+    NSString *name = [[[[tableViewData objectAtIndex:0] objectAtIndex:0] valueForKey:@"fieldValue"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	NSString *cmpny = [[[[tableViewData objectAtIndex:0] objectAtIndex:1] valueForKey:@"fieldValue"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];;
+	NSString *cab = [[[[tableViewData objectAtIndex:0] objectAtIndex:2] valueForKey:@"fieldValue"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];;
+	
+    if ([self validateTextForNull:name] == NO) {
         [self showAlertWithMessage:@"Please enter your name."];
         return;
     }
-    if ([self validateTextOfTextFieldForNull:companyTxtField]  == NO) {
+    if ([self validateTextForNull:cmpny]  == NO) {
         [self showAlertWithMessage:@"Please enter your Company."];
         return;
     }
-    if ([self validateTextOfTextFieldForNull:cabNumberTxtField]  == NO) {
+    if ([self validateTextForNull:cab]  == NO) {
         [self showAlertWithMessage:@"Please enter your Cab Number."];
         return;
     }
     [self performSelector:@selector(createAccountOnServer)];
+	    
+}
+
+#pragma mark -
+#pragma mark UITextField delegate Methods
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{	
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    CGRect newFrame = self.view.frame;
+    newFrame.origin.y = 0;
+    self.view.frame = newFrame;
+    [UIView commitAnimations];
+    
+	[textField resignFirstResponder];
+	return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+	textField.borderStyle = UITextBorderStyleRoundedRect;
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    CGRect newFrame = self.view.frame;
+    newFrame.origin.y = -120;
+    self.view.frame = newFrame;
+    [UIView commitAnimations];
+    
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+	
+	
+	textField.text = [textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	
+	if(![textField.text isEqualToString:@""])
+	{
+		textField.borderStyle = UITextBorderStyleNone;
+	}
+	
+	
+	SignUpCustomCell *cell = (SignUpCustomCell *)[[textField superview] superview];
+	NSMutableString *changedString = [[[tableViewData objectAtIndex:cell.indexPath.section] objectAtIndex:cell.indexPath.row] valueForKey:@"fieldValue"];
+	[changedString setString:textField.text];
+	
+}
+
+
+
+#pragma mark -
+#pragma mark UIAlertView delegate Methods
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	if(alertView.tag == 1)
+	{
+		[self.navigationController popViewControllerAnimated:YES];
+	}
+	
 }
 
 
 //Check for valid value of text field
-- (BOOL)validateTextOfTextFieldForNull: (UITextField *)textField {
-    if (textField.text && ![[textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""]) {
+- (BOOL)validateTextForNull: (NSString *)string {
+    if (string && ![[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""]) {
         return YES;
     }
     return NO;
 }
 
-//Validate the string so that it is not nil, and not having spaces in end/begining
-- (NSString *)validatedTextOfTextFieldForNull: (UITextField *)textField {
-    if (textField.text) {
-        return [textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    }
-    return @"";
-}
 
 - (void)showAlertWithMessage: (NSString *)message {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"TaxiRider App" message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -134,9 +299,13 @@
     [request setPostValue:@"driver" forKey:@"code"];
     [request setPostValue:[CommonMethods uniqueDeviceID] forKey:@"deviceid"];
 
-    [request setPostValue:[self validatedTextOfTextFieldForNull:nameTxtField] forKey:@"name"];
-    [request setPostValue:[self validatedTextOfTextFieldForNull:companyTxtField] forKey:@"company"];
-    [request setPostValue:[self validatedTextOfTextFieldForNull:cabNumberTxtField] forKey:@"cab"];
+    NSString *name = [[[[tableViewData objectAtIndex:0] objectAtIndex:0] valueForKey:@"fieldValue"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	NSString *cmpny = [[[[tableViewData objectAtIndex:0] objectAtIndex:1] valueForKey:@"fieldValue"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];;
+	NSString *cab = [[[[tableViewData objectAtIndex:0] objectAtIndex:2] valueForKey:@"fieldValue"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];;
+
+    [request setPostValue:name forKey:@"name"];
+    [request setPostValue:cmpny forKey:@"company"];
+    [request setPostValue:cab forKey:@"cab"];
     [request setTimeOutSeconds:200];
     [request setDelegate:self];
     
@@ -168,8 +337,12 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
 
         HomeViewController *viewController = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
-        [self.navigationController pushViewController:viewController animated:YES];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+        navigationController.navigationBarHidden = YES;
+        AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+        appDelegate.window.rootViewController = navigationController;
         [viewController release];
+        [navigationController release];
     }
     else {
         [self showAlertWithMessage:[NSString stringWithFormat:@"Error from Server: %@", [dict valueForKey:@"error"]]];
@@ -177,13 +350,6 @@
     
 }
 
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

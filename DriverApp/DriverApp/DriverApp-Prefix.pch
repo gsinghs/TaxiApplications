@@ -13,4 +13,4 @@
     #import <Foundation/Foundation.h>
 #endif
 
-#define hostURL @"http://twaframework.com/taxiapp/webservices.php"
+#define hostURL @"http://www.etlok.com/taxiapp/webservices.php"
