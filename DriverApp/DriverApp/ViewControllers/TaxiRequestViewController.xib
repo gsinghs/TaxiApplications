@@ -211,7 +211,7 @@
 						<string key="NSFrameSize">{320, 460}</string>
 						<reference key="NSSuperview" ref="996756960"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="252472931"/>
+						<reference key="NSNextKeyView" ref="438816178"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<reference key="IBUIImage" ref="1069690293"/>
@@ -314,6 +314,7 @@
 						<string key="NSFrameSize">{320, 346}</string>
 						<reference key="NSSuperview" ref="996756960"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="252472931"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -383,6 +384,15 @@
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">29</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">doneClicked:</string>
+						<reference key="source" ref="87370702"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">31</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -524,7 +534,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">30</int>
+			<int key="maxID">31</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -534,6 +544,7 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="acceptRequestClicked:">id</string>
 						<string key="callcustomerClicked:">id</string>
+						<string key="doneClicked:">id</string>
 						<string key="rejectRequestClicked:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
@@ -543,6 +554,10 @@
 						</object>
 						<object class="IBActionInfo" key="callcustomerClicked:">
 							<string key="name">callcustomerClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="doneClicked:">
+							<string key="name">doneClicked:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="rejectRequestClicked:">
