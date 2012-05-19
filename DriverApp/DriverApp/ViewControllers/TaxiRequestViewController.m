@@ -87,10 +87,11 @@
     [request setPostValue:@"accept" forKey:@"code"];
     [request setPostValue:[CommonMethods uniqueDeviceID] forKey:@"deviceid"];
     
-    [request setPostValue:[[[NSUserDefaults standardUserDefaults] valueForKey:@"request"] valueForKey:@"request_id"] forKey:@"request_id"];
+    [request setPostValue:[NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"taxiRequestId"]] forKey:@"request_id"];
+    [self showAlertWithMessage:[NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"taxiRequestId"]]];
     [request setPostValue:@"0" forKey:@"status"];
-    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"APNS_Token"]) {
-        [request setPostValue:[[NSUserDefaults standardUserDefaults] valueForKey:@"APNS_Token"] forKey:@"token"];
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"APNS_Token"]) {
+        [request setPostValue:[[NSUserDefaults standardUserDefaults] objectForKey:@"APNS_Token"] forKey:@"token"];
     }
     [request setTimeOutSeconds:200];
     [request setDelegate:self];

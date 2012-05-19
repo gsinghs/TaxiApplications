@@ -38,6 +38,8 @@
     UIViewController *viewController = nil;
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"registeredOnServer"]) {
         viewController = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:viewController selector:@selector(requestForTaxi:) name:@"REQUEST_FOR_TAXI" object:nil];
+
     }
     else {
         viewController = [[SignUpViewController alloc] initWithNibName:@"SignUpViewController" bundle:nil];
@@ -86,7 +88,7 @@
 - (void)handleNotification: (NSDictionary *)userInfo {
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     if ([[[userInfo valueForKey:@"aps"] valueForKey:@"alert"] isEqualToString:@"New Taxi Request"]) {
-        [[NSUserDefaults standardUserDefaults] setObject:[userInfo valueForKey:@"request"] forKey:@"request"];
+        [[NSUserDefaults standardUserDefaults] setObject:[[userInfo valueForKey:@"request"] valueForKey:@"request_id"] forKey:@"taxiRequestId"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"REQUEST_FOR_TAXI" object:[userInfo valueForKey:@"request"]];
     }

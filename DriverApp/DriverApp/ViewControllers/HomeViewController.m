@@ -118,8 +118,8 @@
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:requestUrlString]];
     [request setPostValue:@"driver" forKey:@"axn"];
     [request setPostValue:@"newstatus" forKey:@"code"];
-    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"APNS_Token"]) {
-        [request setPostValue:[[NSUserDefaults standardUserDefaults] valueForKey:@"APNS_Token"] forKey:@"token"];
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"APNS_Token"]) {
+        [request setPostValue:[[NSUserDefaults standardUserDefaults] objectForKey:@"APNS_Token"] forKey:@"token"];
     }
     [request setPostValue:[CommonMethods uniqueDeviceID] forKey:@"deviceid"];
     
