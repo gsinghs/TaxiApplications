@@ -158,7 +158,7 @@
 	NSString *fieldValue = [[[tableViewData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] valueForKey:@"fieldValue"];
 	if([fieldValue isEqualToString:@""])
 	{
-		cell.fieldValueTextField.borderStyle = UITextBorderStyleRoundedRect;
+		cell.fieldValueTextField.borderStyle = UITextBorderStyleNone;
 		cell.fieldValueTextField.text = @"";
 		cell.fieldValueTextField.placeholder = [[[tableViewData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] valueForKey:@"fieldPlaceholder"];
 	}
@@ -224,7 +224,7 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-	textField.borderStyle = UITextBorderStyleRoundedRect;
+	//textField.borderStyle = UITextBorderStyleRoundedRect;
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.3];
     CGRect newFrame = self.view.frame;

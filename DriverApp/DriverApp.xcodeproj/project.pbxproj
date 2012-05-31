@@ -28,6 +28,8 @@
 		186E86C3154E9FE900825FFC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186E86C2154E9FE900825FFC /* CoreGraphics.framework */; };
 		186E86C9154E9FE900825FFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 186E86C7154E9FE900825FFC /* InfoPlist.strings */; };
 		186E86CB154E9FE900825FFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E86CA154E9FE900825FFC /* main.m */; };
+		18AC9A681574A83200A7900A /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AC9A671574A83200A7900A /* AddressBook.framework */; };
+		18AC9A701574AFAD00A7900A /* AddressAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9A6E1574AFAD00A7900A /* AddressAnnotation.m */; };
 		18AF48C61566B50000E2683E /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AF48C41566B4FF00E2683E /* icon.png */; };
 		18AF48C71566B50000E2683E /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AF48C51566B4FF00E2683E /* icon@2x.png */; };
 		18AF48CF1566C19B00E2683E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AF48CD1566C19900E2683E /* Default@2x.png */; };
@@ -88,6 +90,9 @@
 		186E86CA154E9FE900825FFC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		186E86CC154E9FE900825FFC /* DriverApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DriverApp-Prefix.pch"; sourceTree = "<group>"; };
 		186E86CD154E9FE900825FFC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		18AC9A671574A83200A7900A /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		18AC9A6E1574AFAD00A7900A /* AddressAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressAnnotation.m; sourceTree = "<group>"; };
+		18AC9A6F1574AFAD00A7900A /* AddressAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressAnnotation.h; sourceTree = "<group>"; };
 		18AF48C41566B4FF00E2683E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
 		18AF48C51566B4FF00E2683E /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "../icon@2x.png"; sourceTree = "<group>"; };
 		18AF48CD1566C19900E2683E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
@@ -147,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18AC9A681574A83200A7900A /* AddressBook.framework in Frameworks */,
 				1843E68B15665A1200836DE9 /* MapKit.framework in Frameworks */,
 				1843E6871566522F00836DE9 /* libz.1.1.3.dylib in Frameworks */,
 				18C67EE91560F6EF007A2EFF /* CoreLocation.framework in Frameworks */,
@@ -214,6 +220,7 @@
 		186E86BD154E9FE900825FFC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18AC9A671574A83200A7900A /* AddressBook.framework */,
 				1843E6861566522F00836DE9 /* libz.1.1.3.dylib */,
 				1843E68A15665A1200836DE9 /* MapKit.framework */,
 				18C67EE81560F6EE007A2EFF /* CoreLocation.framework */,
@@ -283,6 +290,8 @@
 		18FC3CB3155A2806004D4024 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				18AC9A6E1574AFAD00A7900A /* AddressAnnotation.m */,
+				18AC9A6F1574AFAD00A7900A /* AddressAnnotation.h */,
 				18FC3CBF155A2BEC004D4024 /* CustomTextField.h */,
 				18FC3CC0155A2BEC004D4024 /* CustomTextField.m */,
 				18FC3CB4155A2815004D4024 /* CommonMethods.h */,
@@ -432,6 +441,7 @@
 				1843E68115664D4E00836DE9 /* SignUpCustomCell.m in Sources */,
 				1843E685156650B300836DE9 /* Reachability.m in Sources */,
 				1843E6891566529000836DE9 /* AppDelegate.m in Sources */,
+				18AC9A701574AFAD00A7900A /* AddressAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

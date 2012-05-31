@@ -89,6 +89,7 @@
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     if ([[[userInfo valueForKey:@"aps"] valueForKey:@"alert"] isEqualToString:@"New Taxi Request"]) {
         [[NSUserDefaults standardUserDefaults] setObject:[[userInfo valueForKey:@"request"] valueForKey:@"request_id"] forKey:@"taxiRequestId"];
+        [[NSUserDefaults standardUserDefaults] setObject:[[userInfo valueForKey:@"request"] valueForKey:@"location"] forKey:@"requestLoc"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"REQUEST_FOR_TAXI" object:[userInfo valueForKey:@"request"]];
     }
@@ -109,6 +110,14 @@
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
+    if (locUpdatingTimer && [locUpdatingTimer isValid]) {
+        isTimerOn = YES;
+        [self stopTimers];
+    }
+    if (mLocationManager) {
+        [self.mLocationManager stopUpdatingLocation];
+        self.mLocationManager.delegate = nil;
+    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -116,6 +125,14 @@
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
+    if (mLocationManager) {
+        [self updateTheLocation];
+    }
+    if (isTimerOn) {
+        [self locationUpdatingTimer];
+        isTimerOn = NO;
+    }
+    
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -239,6 +256,11 @@
 #pragma mark - Update Location On server periodically
 
 - (void)locationUpdatingTimer {
+    [self stopTimers];
+    [self performSelector:@selector(startTimer) withObject:nil afterDelay:2];
+}
+
+- (void)startTimer {
     locUpdatingTimer = [[NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(sendCurrentLocationToServer) userInfo:nil repeats:YES] retain];
 }
 
@@ -246,8 +268,9 @@
     if (locUpdatingTimer && [locUpdatingTimer isValid]) {
         [locUpdatingTimer invalidate];
         [locUpdatingTimer release];
-        locUpdatingTimer = nil;
     }
+    locUpdatingTimer = nil;
+
 }
 
 - (void)sendCurrentLocationToServer {

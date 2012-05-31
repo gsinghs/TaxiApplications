@@ -20,6 +20,7 @@
     float longitudeVal;
     
     NSTimer *locUpdatingTimer;
+    BOOL isTimerOn;
 }
 
 @property (retain, nonatomic) UIWindow *window;

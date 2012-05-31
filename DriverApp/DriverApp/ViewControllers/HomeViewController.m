@@ -39,8 +39,39 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestForTaxi:) name:@"REQUEST_FOR_TAXI" object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeStatusToAvailable) name:@"SET_STATUS_AVAILABLE" object:nil];
+
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    mapView.delegate = self;
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    mapView.delegate = nil;
+}
+
+- (void)changeStatusToAvailable {
+    [self availableORHireClicked:availableButton];
+}
+
+
+#pragma mark Map Delegates
+
+// mapView:viewForAnnotation: provides the view for each annotation.
+// This method may be called for all or some of the added annotations.
+// For MapKit provided annotations (eg. MKUserLocation) return nil to use the MapKit provided annotation view.
+- (MKAnnotationView *)mapView:(MKMapView *)mapViews viewForAnnotation:(id <MKAnnotation>)annotation {
+    
+    MKCoordinateRegion region = mapView.region;
+    region.center = [annotation coordinate];
+    region.span = MKCoordinateSpanMake(.01, .01);
+    [mapView setRegion:region animated:YES];
+    return nil;
+}
+
 
 - (void)viewDidUnload
 {
@@ -139,7 +170,7 @@
 //If request fails, show an alert to the user and hide the indicator view
 - (void)uploadReportFailed:(ASIHTTPRequest *)request {
     NSLog(@"uploadReportFailed: %@", [request responseString]);
-    [self showAlertWithMessage:@"Uploading to Server failed, Please try again later."];
+    [self showAlertWithMessage:@"Setting status on Server failed, Please try again later."];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [appDelegate hideLoadingIndicator];
     occupyButton.userInteractionEnabled = YES;

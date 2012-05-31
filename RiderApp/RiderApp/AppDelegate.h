@@ -16,6 +16,7 @@
     CLLocationManager *mLocationManager;
     float latitudeVal;
     float longitudeVal;
+    int locationManagerCount;
 
 }
 
@@ -31,5 +32,6 @@
 -(void) hideLoadingIndicator;
 - (BOOL)isInternetAvailable;
 - (void)handleNotification: (NSDictionary *)userInfo;
+- (void)updateTheLocation;
 
 @end

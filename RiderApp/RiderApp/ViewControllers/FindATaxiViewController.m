@@ -11,6 +11,7 @@
 #import "CommonMethods.h"
 #import "NSString+SBJSON.h"
 #import "TaxiFoundViewController.h"
+#import "AppDelegate.h"
 
 @implementation FindATaxiViewController
 
@@ -102,10 +103,15 @@
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:requestUrlString]];
     [request setPostValue:@"request" forKey:@"axn"];
     [request setPostValue:@"create" forKey:@"code"];
+    
     [request setPostValue:[CommonMethods uniqueDeviceID] forKey:@"deviceid"];
     if ([[NSUserDefaults standardUserDefaults] valueForKey:@"APNS_Token"]) {
         [request setPostValue:[[NSUserDefaults standardUserDefaults] valueForKey:@"APNS_Token"] forKey:@"token"];
     }
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSString *locString = [NSString stringWithFormat:@"%f,%f", appDelegate.latitudeVal, appDelegate.longitudeVal];
+    [request setPostValue:locString forKey:@"location"];
+
     [request setTimeOutSeconds:200];
     [request setDelegate:self];
     

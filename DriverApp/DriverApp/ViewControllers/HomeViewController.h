@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-@interface HomeViewController : UIViewController {
+@interface HomeViewController : UIViewController <MKMapViewDelegate>{
     IBOutlet UIButton *availableButton;
     IBOutlet UIButton *occupyButton;
-    
+    IBOutlet MKMapView *mapView;
 }
 
 - (IBAction)availableORHireClicked:(UIButton *)sender;

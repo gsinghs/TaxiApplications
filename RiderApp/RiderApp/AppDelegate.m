@@ -43,6 +43,7 @@
     self.navigationController = [[[UINavigationController alloc] initWithRootViewController:viewController] autorelease];
     self.navigationController.navigationBarHidden = YES;
     [viewController release];
+    [self updateTheLocation];
     
     // Register for notifications
     [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound| UIRemoteNotificationTypeBadge)];  
@@ -72,7 +73,7 @@
 - (void)handleNotification: (NSDictionary *)userInfo {
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     if ([[[userInfo valueForKey:@"aps"] valueForKey:@"alert"] isEqualToString:@"Taxi Found"]) {
-        [[NSUserDefaults standardUserDefaults] setObject:[userInfo valueForKey:@"request"] forKey:@"request"];
+         [[NSUserDefaults standardUserDefaults] setObject:[userInfo valueForKey:@"request"] forKey:@"request"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"TAXI_FOUND" object:[userInfo valueForKey:@"request"]];
     }
@@ -107,6 +108,7 @@
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
+    [self updateTheLocation];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -196,6 +198,7 @@
     else {
         self.mLocationManager.delegate = self;
     }
+    locationManagerCount = 0;
     [self.mLocationManager startUpdatingLocation];
 }
 

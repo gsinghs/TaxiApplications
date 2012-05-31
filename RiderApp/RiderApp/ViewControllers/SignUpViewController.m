@@ -127,9 +127,6 @@
     
     SignUpCustomCell *cell = (SignUpCustomCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-		
-		
-		
 		NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"SignUpCustomCell" owner:nil options:nil];
 		
 		for(id currentObject in topLevelObjects)
@@ -143,21 +140,19 @@
 			}
 		}		
 	}
-	
 	cell.fieldNameLabel.text = [[[tableViewData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] valueForKey:@"fieldName"];
     cell.fieldValueTextField.delegate = self;
 	cell.indexPath = indexPath;
 	
 	
 	NSString *fieldValue = [[[tableViewData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] valueForKey:@"fieldValue"];
-	if([fieldValue isEqualToString:@""])
-	{
-		cell.fieldValueTextField.borderStyle = UITextBorderStyleRoundedRect;
+	if([fieldValue isEqualToString:@""])	{
+		cell.fieldValueTextField.borderStyle = UITextBorderStyleNone;
 		cell.fieldValueTextField.text = @"";
 		cell.fieldValueTextField.placeholder = [[[tableViewData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] valueForKey:@"fieldPlaceholder"];
 	}
 	else
-	{
+{
 		cell.fieldValueTextField.borderStyle = UITextBorderStyleNone;
 		cell.fieldValueTextField.text = fieldValue;
 		cell.fieldValueTextField.placeholder = [[[tableViewData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] valueForKey:@"fieldPlaceholder"];
@@ -224,7 +219,7 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-	textField.borderStyle = UITextBorderStyleRoundedRect;
+	//textField.borderStyle = UITextBorderStyleRoundedRect;
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.3];
     CGRect newFrame = self.view.frame;
