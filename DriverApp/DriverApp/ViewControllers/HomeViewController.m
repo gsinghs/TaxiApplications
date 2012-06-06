@@ -40,7 +40,40 @@
     // Do any additional setup after loading the view from its nib.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestForTaxi:) name:@"REQUEST_FOR_TAXI" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeStatusToAvailable) name:@"SET_STATUS_AVAILABLE" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(serverResponseForRequests:) name:@"INITAL_SERVER_RESPONSE" object:nil];
 
+}
+
+- (void)serverResponseForRequests: (NSNotification *)notification {
+    NSDictionary *requestDict = [notification object];
+    NSLog(@"%@", requestDict);
+    if (![[self.navigationController.viewControllers lastObject] isEqual:self]) {
+        [self.navigationController popToViewController:self animated:NO];
+    }
+    
+    if ([[requestDict valueForKey:@"status"] intValue]) {
+        [self changeButtonStatesForButtons:availableButton];
+    }
+    else {
+        [self changeButtonStatesForButtons:occupyButton];
+    }
+    
+    switch ([[requestDict valueForKey:@"request"] intValue]) {
+        case 0: {
+            //  There is no active requests
+            break;
+        }
+        case 1: {
+            //  Active request found
+            [[NSUserDefaults standardUserDefaults] setObject:[requestDict valueForKey:@"request_id"] forKey:@"taxiRequestId"];
+            [[NSUserDefaults standardUserDefaults] setObject:[requestDict valueForKey:@"location"] forKey:@"requestLoc"];
+            [self performSelector:@selector(requestForTaxi:) withObject:nil];
+            break;
+        }
+        default:
+            break;
+    }
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -95,16 +128,28 @@
 
 - (void)requestForTaxi: (NSNotification *)notification {
   //  NSDictionary *requestDict = [notification object];
-    TaxiRequestViewController *viewController = [[TaxiRequestViewController alloc] initWithNibName:@"TaxiRequestViewController" bundle:nil];
-    [self.navigationController pushViewController:viewController animated:YES];
-    [viewController release];
+    [self performSelector:@selector(pushToRequestViewWithDelay) withObject:nil afterDelay:1];
+}
+
+- (void)pushToRequestViewWithDelay {
+    if ([[self.navigationController.viewControllers lastObject] isEqual:self]) {
+        TaxiRequestViewController *viewController = [[TaxiRequestViewController alloc] initWithNibName:@"TaxiRequestViewController" bundle:[NSBundle mainBundle]];
+        [self.navigationController pushViewController:viewController animated:YES];
+        [viewController release];
+    }
 }
 
 #pragma - button clicks
 
 - (IBAction)availableORHireClicked:(UIButton *)sender {
     
+    occupyButton.userInteractionEnabled = NO;
+    availableButton.userInteractionEnabled = NO;
     [self postStatusOnServer:[sender tag]];
+    [self changeButtonStatesForButtons:sender];
+} 
+    
+- (void)changeButtonStatesForButtons: (UIButton *)sender {    
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if ([sender tag] == 0) {//occupy clicked
         [occupyButton setTitle:@"OCCUPIED" forState:UIControlStateNormal];
@@ -130,8 +175,6 @@
         [availableButton setBackgroundImage:nil forState:UIControlStateNormal];
         [appDelegate locationUpdatingTimer];
     }
-    occupyButton.userInteractionEnabled = NO;
-    availableButton.userInteractionEnabled = NO;
 }
 
 
@@ -153,7 +196,7 @@
         [request setPostValue:[[NSUserDefaults standardUserDefaults] objectForKey:@"APNS_Token"] forKey:@"token"];
     }
     [request setPostValue:[CommonMethods uniqueDeviceID] forKey:@"deviceid"];
-    
+    NSLog(@"DEVICE ID: %@", [CommonMethods uniqueDeviceID]);
     [request setPostValue:[NSString stringWithFormat:@"%d", status] forKey:@"status"];
     NSString *locString = [NSString stringWithFormat:@"%f,%f", appDelegate.latitudeVal, appDelegate.longitudeVal];
     

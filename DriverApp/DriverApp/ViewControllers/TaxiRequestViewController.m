@@ -153,34 +153,6 @@
     [self setLabelTexts:@"Reverse Geocoding Failed: Could not retrieve the specified place information."];
 }
 
-// Delegate methods
-
-- (void)reverseGeocoder:(MKReverseGeocoder*)geocoder didFindPlacemark:(MKPlacemark*)place {
-    NSString *street = place.thoroughfare;
-    NSString *city = place.locality;
-    NSString *state = place.administrativeArea;
-    NSMutableString *addressString = [NSMutableString stringWithString:@""];
-    if (street) {
-        [addressString appendFormat:@"%@\n",street];
-    }
-    if (city) {
-        [addressString appendFormat:@"%@, ",city];
-    }
-    if (state) {
-        [addressString appendString:state];
-    }
-    [self setLabelTexts:addressString];
-}
-
-
-
-- (void)reverseGeocoder:(MKReverseGeocoder*)geocoder didFailWithError:(NSError*)error
-
-{
-  //  [self showAlertWithMessage:[NSString stringWithFormat:@"Could not retrieve the specified place information.\n Error: %@", [error localizedDescription]]];
-    [self setLabelTexts:@"Reverse Geocoding Failed: Could not retrieve the specified place information."];
-}
-
 - (void)setLabelTexts: (NSString *)string {
     descriptionLabel.text = string;
     proceedToDescriptionLabel.text = string;

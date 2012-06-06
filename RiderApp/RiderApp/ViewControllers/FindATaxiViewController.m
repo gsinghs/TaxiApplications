@@ -44,6 +44,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(taxiFound:) name:@"TAXI_FOUND" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusChange:) name:@"STATUS_REQUEST" object:nil];
+
 
 }
 
@@ -75,6 +77,50 @@
     [viewController release];
 }
 
+- (void)statusChange: (NSNotification *)notification {
+    NSDictionary *requestDict = [notification object];
+    NSLog(@"%@", requestDict);
+    [warningView removeFromSuperview];
+    [findingTaxiView removeFromSuperview];
+
+    switch ([[requestDict valueForKey:@"status"] intValue]) {
+        case 0: {
+            //        Status = 0:   The request was created but no drivers have accepted it yet.  In this case, show the Finding Taxis screen.
+            [self.view addSubview:findingTaxiView];
+            break;
+        }
+        case 1: {
+            //        Status = 1:  The driver has accepted.  In this case, I will also send the company and cab_id.  Show, the Taxi Found page.
+            //        Here is what I will return: {"returnCode":0, "status":1,"company":"Metro Taxi", "cab_id":"230"}
+            TaxiFoundViewController *viewController = [[TaxiFoundViewController alloc] initWithNibName:@"TaxiFoundViewController" bundle:nil];
+            [self.navigationController pushViewController:viewController animated:YES];
+            [viewController release];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"madeRequestID"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+
+            break;
+        }
+        case 2: {
+            //        Status = 2:  The request has expired.  In this case, show the No Taxi's found page
+            [self.view addSubview:warningView];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"madeRequestID"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+
+            break;
+        }
+        case 3: {
+            //        Status = 3:  The request is completed or request was not found.  In this case, show the first screen with the Request Taxi button.
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"madeRequestID"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+
+            break;
+        }
+        default:
+            break;
+    }
+
+}
+
 - (IBAction)doneClicked:(id)sender {
     [findingTaxiView removeFromSuperview];
     [warningView removeFromSuperview];
@@ -91,6 +137,8 @@
 - (IBAction)cancelFindClicked:(id)sender {
     [findingTaxiView removeFromSuperview];
     [warningView removeFromSuperview];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"madeRequestID"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark- Server Posting Methods
@@ -135,7 +183,8 @@
     NSLog(@"uploadReportFinished: %@", dict);
     
     if ([[dict valueForKey:@"returnCode"] intValue] == 0) { //Everything was fine on server.
-       
+        [[NSUserDefaults standardUserDefaults] setObject:[dict valueForKey:@"requestid"] forKey:@"madeRequestID"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
     else if ([[dict valueForKey:@"returnCode"] intValue] == 1 && [[dict valueForKey:@"error"] isEqualToString:@"No Taxis Found"]) {
         [self.view addSubview:warningView];

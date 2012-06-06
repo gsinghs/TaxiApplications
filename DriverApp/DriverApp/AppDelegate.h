@@ -21,6 +21,7 @@
     
     NSTimer *locUpdatingTimer;
     BOOL isTimerOn;
+    BOOL isAppRunning;
 }
 
 @property (retain, nonatomic) UIWindow *window;

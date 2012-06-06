@@ -18,4 +18,6 @@
 - (IBAction)availableORHireClicked:(UIButton *)sender;
 - (void)postStatusOnServer:(int)status;
 - (void)showAlertWithMessage: (NSString *)message;
+- (void)changeButtonStatesForButtons: (UIButton *)sender;
+
 @end

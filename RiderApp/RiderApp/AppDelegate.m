@@ -11,6 +11,9 @@
 #import <QuartzCore/QuartzCore.h>
 #import "FindATaxiViewController.h"
 #import "Reachability.h"
+#import "ASIFormDataRequest.h"
+#import "CommonMethods.h"
+#import "NSString+SBJSON.h"
 
 @implementation AppDelegate
 
@@ -35,6 +38,8 @@
     UIViewController *viewController = nil;
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"registeredOnServer"]) {
         viewController = [[FindATaxiViewController alloc] initWithNibName:@"FindATaxiViewController" bundle:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:viewController selector:@selector(statusChange:) name:@"STATUS_REQUEST" object:nil];
+
         [[NSNotificationCenter defaultCenter] addObserver:viewController selector:@selector(taxiFound:) name:@"TAXI_FOUND" object:nil];
     }
     else {
@@ -57,6 +62,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window addSubview:navigationController.view];
     [self.window makeKeyAndVisible];
+    [self performSelector:@selector(checkingStatusForOldRequests)];
     return YES;
 }
 
@@ -77,6 +83,52 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"TAXI_FOUND" object:[userInfo valueForKey:@"request"]];
     }
+}
+
+- (void)checkingStatusForOldRequests {
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"madeRequestID"]) {
+        [self showLoadingIndicator];
+        [self performSelector:@selector(makeRequestOnServer)];
+    }
+}
+
+#pragma mark- Server Posting Methods
+
+//Make a server call to create an account on server
+- (void)makeRequestOnServer {
+    NSString *requestUrlString = hostURL;
+    
+    //Creating the HTTP Request and setting the required post values
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:requestUrlString]];
+    [request setPostValue:@"request" forKey:@"axn"];
+    [request setPostValue:@"checkstatus" forKey:@"code"];
+    [request setPostValue:[[NSUserDefaults standardUserDefaults] objectForKey:@"madeRequestID"] forKey:@"request_id"];
+    [request setPostValue:[CommonMethods uniqueDeviceID] forKey:@"deviceid"];
+   
+    [request setTimeOutSeconds:200];
+    [request setDelegate:self];
+    
+    [request setDidFinishSelector:@selector(uploadReportFinished:)];
+    [request setDidFailSelector:@selector(uploadReportFailed:)];
+    [request startAsynchronous];
+    
+}
+
+//If request fails, show an alert to the user and hide the indicator view
+- (void)uploadReportFailed:(ASIHTTPRequest *)request {
+    NSLog(@"uploadReportFailed: %@", [request responseString]);
+    [self hideLoadingIndicator];
+}
+
+//If request finishes, hide the loading indicator and pass him to the next view
+- (void)uploadReportFinished: (ASIHTTPRequest *)request {
+    NSDictionary *dict = [[request responseString] JSONValue];    
+    if ([[dict valueForKey:@"returnCode"] intValue] == 0) { //Everything was fine on server
+        [[NSUserDefaults standardUserDefaults] setObject:dict forKey:@"request"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"STATUS_REQUEST" object:dict];
+    }
+    [self hideLoadingIndicator];
 }
 
 
@@ -109,6 +161,7 @@
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
     [self updateTheLocation];
+    [self performSelector:@selector(checkingStatusForOldRequests)];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

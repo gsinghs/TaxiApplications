@@ -37,18 +37,21 @@
     
     UIViewController *viewController = nil;
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"registeredOnServer"]) {
-        viewController = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+        viewController = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:[NSBundle mainBundle]];
         [[NSNotificationCenter defaultCenter] addObserver:viewController selector:@selector(requestForTaxi:) name:@"REQUEST_FOR_TAXI" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:viewController selector:@selector(changeStatusToAvailable) name:@"SET_STATUS_AVAILABLE" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:viewController selector:@selector(serverResponseForRequests:) name:@"INITAL_SERVER_RESPONSE" object:nil];
 
     }
     else {
-        viewController = [[SignUpViewController alloc] initWithNibName:@"SignUpViewController" bundle:nil];
+        viewController = [[SignUpViewController alloc] initWithNibName:@"SignUpViewController" bundle:[NSBundle mainBundle]];
     }
     
     self.navigationController = [[[UINavigationController alloc] initWithRootViewController:viewController] autorelease];
     self.navigationController.navigationBarHidden = YES;
     [viewController release];
-    
+    isAppRunning = YES;
+ 
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window addSubview:navigationController.view];
@@ -62,8 +65,9 @@
     if (userInfo != nil) {
         [self handleNotification:userInfo];
     }
-    
-    
+    else {
+        [self performSelector:@selector(checkForExistingRequests)];
+    }
     [self updateTheLocation];
     return YES;
 }
@@ -86,12 +90,14 @@
 }
 
 - (void)handleNotification: (NSDictionary *)userInfo {
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-    if ([[[userInfo valueForKey:@"aps"] valueForKey:@"alert"] isEqualToString:@"New Taxi Request"]) {
-        [[NSUserDefaults standardUserDefaults] setObject:[[userInfo valueForKey:@"request"] valueForKey:@"request_id"] forKey:@"taxiRequestId"];
-        [[NSUserDefaults standardUserDefaults] setObject:[[userInfo valueForKey:@"request"] valueForKey:@"location"] forKey:@"requestLoc"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"REQUEST_FOR_TAXI" object:[userInfo valueForKey:@"request"]];
+    if (isAppRunning) {
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+        if ([[[userInfo valueForKey:@"aps"] valueForKey:@"alert"] isEqualToString:@"New Taxi Request"]) {
+            [[NSUserDefaults standardUserDefaults] setObject:[[userInfo valueForKey:@"request"] valueForKey:@"request_id"] forKey:@"taxiRequestId"];
+            [[NSUserDefaults standardUserDefaults] setObject:[[userInfo valueForKey:@"request"] valueForKey:@"location"] forKey:@"requestLoc"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"REQUEST_FOR_TAXI" object:[userInfo valueForKey:@"request"]];
+        }
     }
 }
 
@@ -110,6 +116,7 @@
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
+    isAppRunning = NO;
     if (locUpdatingTimer && [locUpdatingTimer isValid]) {
         isTimerOn = YES;
         [self stopTimers];
@@ -272,6 +279,49 @@
     locUpdatingTimer = nil;
 
 }
+
+#pragma mark - server calls
+
+- (void)checkForExistingRequests {
+    [self showLoadingIndicator];
+    NSString *requestUrlString = hostURL;
+    //Creating the HTTP Request and setting the required post values
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:requestUrlString]];
+    [request setPostValue:@"driver" forKey:@"axn"];
+    [request setPostValue:@"checkstatus" forKey:@"code"];
+    [request setPostValue:[CommonMethods uniqueDeviceID] forKey:@"deviceid"];
+    [request setTimeOutSeconds:200];
+    [request setDelegate:self];
+    
+    [request setDidFinishSelector:@selector(checkForExistingRequestsFinished:)];
+    [request setDidFailSelector:@selector(checkForExistingRequestsFailed:)];
+    [request startAsynchronous];
+}
+
+//If request fails, show an alert to the user and hide the indicator view
+- (void)checkForExistingRequestsFailed:(ASIHTTPRequest *)request {
+    [self hideLoadingIndicator];
+    isAppRunning = YES;
+    NSLog(@"uploadReportFailed: %@", [request responseString]);
+   // [self showAlertWithMessage:@"Sending Location to Server failed, Please try again later."];
+    
+}
+
+//If request finishes, hide the loading indicator and pass him to the next view
+- (void)checkForExistingRequestsFinished: (ASIHTTPRequest *)request {
+    isAppRunning = YES;
+    [self hideLoadingIndicator];
+    NSLog(@"Response: %@", [request responseString]);
+    NSDictionary *dict = [[request responseString] JSONValue];
+    if ([[dict valueForKey:@"returnCode"] intValue] == 0) { //Everything was fine on server.
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"INITAL_SERVER_RESPONSE" object:dict];
+    }
+    else {
+        [self showAlertWithMessage:[NSString stringWithFormat:@"Error from Server: %@", [dict valueForKey:@"error"]]];
+    }
+}
+
+
 
 - (void)sendCurrentLocationToServer {
     NSString *requestUrlString = hostURL;

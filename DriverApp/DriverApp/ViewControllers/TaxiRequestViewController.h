@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface TaxiRequestViewController : UIViewController <MKReverseGeocoderDelegate, MKMapViewDelegate>{
+@interface TaxiRequestViewController : UIViewController <MKMapViewDelegate>{
     IBOutlet UILabel *descriptionLabel;
     IBOutlet UILabel *proceedToDescriptionLabel;
     IBOutlet UILabel *distanceLabel;

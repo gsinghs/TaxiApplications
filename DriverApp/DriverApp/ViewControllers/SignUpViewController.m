@@ -336,7 +336,7 @@
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"registeredOnServer"];
         [[NSUserDefaults standardUserDefaults] synchronize];
 
-        HomeViewController *viewController = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+        HomeViewController *viewController = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:[NSBundle mainBundle]];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
         navigationController.navigationBarHidden = YES;
         AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
