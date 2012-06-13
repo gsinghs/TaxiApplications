@@ -115,7 +115,7 @@
         NSDictionary *addressDict = [addressArray objectAtIndex:0];
         NSString *address = [addressDict valueForKey:@"formatted_address"];
         if (address) {
-            NSArray *compsArray = [address componentsSeparatedByString:@","];
+            NSArray *compsArray = [address componentsSeparatedByString:@", "];
             if ([compsArray count] > 1) {
                 NSString *firstStreetString = [compsArray objectAtIndex:0];
                 NSMutableString *addressString = [NSMutableString stringWithString:firstStreetString];

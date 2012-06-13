@@ -46,7 +46,8 @@
 
 - (void)serverResponseForRequests: (NSNotification *)notification {
     NSDictionary *requestDict = [notification object];
-    NSLog(@"%@", requestDict);
+   // NSLog(@"%@", requestDict);
+    
     if (![[self.navigationController.viewControllers lastObject] isEqual:self]) {
         [self.navigationController popToViewController:self animated:NO];
     }
@@ -57,7 +58,7 @@
     else {
         [self changeButtonStatesForButtons:occupyButton];
     }
-    
+
     switch ([[requestDict valueForKey:@"request"] intValue]) {
         case 0: {
             //  There is no active requests
@@ -67,6 +68,8 @@
             //  Active request found
             [[NSUserDefaults standardUserDefaults] setObject:[requestDict valueForKey:@"request_id"] forKey:@"taxiRequestId"];
             [[NSUserDefaults standardUserDefaults] setObject:[requestDict valueForKey:@"location"] forKey:@"requestLoc"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+
             [self performSelector:@selector(requestForTaxi:) withObject:nil];
             break;
         }

@@ -50,7 +50,7 @@
     self.navigationController = [[[UINavigationController alloc] initWithRootViewController:viewController] autorelease];
     self.navigationController.navigationBarHidden = YES;
     [viewController release];
-    isAppRunning = YES;
+    isPushRecieved = NO;
  
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -65,7 +65,7 @@
     if (userInfo != nil) {
         [self handleNotification:userInfo];
     }
-    else {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"registeredOnServer"]) {
         [self performSelector:@selector(checkForExistingRequests)];
     }
     [self updateTheLocation];
@@ -90,15 +90,7 @@
 }
 
 - (void)handleNotification: (NSDictionary *)userInfo {
-    if (isAppRunning) {
-        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-        if ([[[userInfo valueForKey:@"aps"] valueForKey:@"alert"] isEqualToString:@"New Taxi Request"]) {
-            [[NSUserDefaults standardUserDefaults] setObject:[[userInfo valueForKey:@"request"] valueForKey:@"request_id"] forKey:@"taxiRequestId"];
-            [[NSUserDefaults standardUserDefaults] setObject:[[userInfo valueForKey:@"request"] valueForKey:@"location"] forKey:@"requestLoc"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"REQUEST_FOR_TAXI" object:[userInfo valueForKey:@"request"]];
-        }
-    }
+    isPushRecieved = YES;
 }
 
 
@@ -116,7 +108,7 @@
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
-    isAppRunning = NO;
+    isPushRecieved = NO;
     if (locUpdatingTimer && [locUpdatingTimer isValid]) {
         isTimerOn = YES;
         [self stopTimers];
@@ -132,6 +124,7 @@
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
+    [self performSelector:@selector(checkForExistingRequests)];
     if (mLocationManager) {
         [self updateTheLocation];
     }
@@ -139,7 +132,6 @@
         [self locationUpdatingTimer];
         isTimerOn = NO;
     }
-    
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -284,6 +276,8 @@
 
 - (void)checkForExistingRequests {
     [self showLoadingIndicator];
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+
     NSString *requestUrlString = hostURL;
     //Creating the HTTP Request and setting the required post values
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:requestUrlString]];
@@ -301,7 +295,7 @@
 //If request fails, show an alert to the user and hide the indicator view
 - (void)checkForExistingRequestsFailed:(ASIHTTPRequest *)request {
     [self hideLoadingIndicator];
-    isAppRunning = YES;
+    isPushRecieved = NO;
     NSLog(@"uploadReportFailed: %@", [request responseString]);
    // [self showAlertWithMessage:@"Sending Location to Server failed, Please try again later."];
     
@@ -309,16 +303,21 @@
 
 //If request finishes, hide the loading indicator and pass him to the next view
 - (void)checkForExistingRequestsFinished: (ASIHTTPRequest *)request {
-    isAppRunning = YES;
     [self hideLoadingIndicator];
-    NSLog(@"Response: %@", [request responseString]);
+   // NSLog(@"Response: %@", [request responseString]);
+    
     NSDictionary *dict = [[request responseString] JSONValue];
     if ([[dict valueForKey:@"returnCode"] intValue] == 0) { //Everything was fine on server.
+
+        if (isPushRecieved && [[dict valueForKey:@"request"] intValue] == 0) {
+            [self showAlertWithMessage:@"The request has expired."];
+        }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"INITAL_SERVER_RESPONSE" object:dict];
     }
     else {
         [self showAlertWithMessage:[NSString stringWithFormat:@"Error from Server: %@", [dict valueForKey:@"error"]]];
     }
+    isPushRecieved = NO;
 }
 
 
@@ -345,7 +344,7 @@
 //If request fails, show an alert to the user and hide the indicator view
 - (void)uploadReportFailed:(ASIHTTPRequest *)request {
     NSLog(@"uploadReportFailed: %@", [request responseString]);
-    [self showAlertWithMessage:@"Sending Location to Server failed, Please try again later."];
+   // [self showAlertWithMessage:@"Sending Location to Server failed, Please try again later."];
 }
 
 //If request finishes, hide the loading indicator and pass him to the next view
